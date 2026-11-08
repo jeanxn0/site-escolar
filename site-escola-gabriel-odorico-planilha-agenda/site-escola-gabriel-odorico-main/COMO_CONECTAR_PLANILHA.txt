@@ -29,5 +29,6 @@ A integração alimenta a agenda que já existe no site. Não utiliza Google Age
    Datas inválidas são ignoradas com aviso na área da agenda.
 9. Teste em uma cópia antes de publicar. Não há publicação automática neste PR.
 
-A planilha ainda precisa do link real. A criação da conta
-Google e a publicação da aba devem ser concluídas pelo responsável da escola.
+A planilha real já está configurada em config.js e a leitura pública foi validada.
+A aba Conteudos tem quatro exemplos ocultos; Como usar contém as instruções.
+A integração está na proposta de revisão, sem publicação do site.
