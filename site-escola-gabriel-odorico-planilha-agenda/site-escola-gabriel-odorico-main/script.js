@@ -1,6 +1,8 @@
 // Cole aqui o link CSV publicado da aba Conteudos no Google Planilhas.
-const GOOGLE_SHEETS_CSV_URL = "";
+const GOOGLE_SHEETS_CSV_URL = window.ESCOLA_CONFIG?.planilhaCsvUrl || "";
 let eventosDaPlanilha = [];
+let noticiasDaPlanilha = [];
+let conteudoCarregado = false;
 
 const menuMobile = document.getElementById("menuMobile");
 const menu = document.getElementById("menu");
@@ -219,6 +221,26 @@ function parseCsv(texto) {
     return linhas;
 }
 
+function dataValida(valor) {
+    const partes = /^(\d{4})-(\d{2})-(\d{2})$/.exec(valor);
+    if (!partes) return null;
+    const data = new Date(Number(partes[1]), Number(partes[2]) - 1, Number(partes[3]), 12);
+    return data.getFullYear() === Number(partes[1]) && data.getMonth() === Number(partes[2]) - 1
+        && data.getDate() === Number(partes[3]) ? data : null;
+}
+
+function formatarData(valor) {
+    const data = dataValida(valor);
+    return data ? data.toLocaleDateString("pt-BR") : valor;
+}
+
+function linkSeguro(valor) {
+    try {
+        const url = new URL(valor);
+        return ["https:", "mailto:", "tel:"].includes(url.protocol) ? url.href : "";
+    } catch { return ""; }
+}
+
 function criarTexto(tag, classe, texto) {
     const elemento = document.createElement(tag);
     if (classe) elemento.className = classe;
@@ -231,6 +253,7 @@ function exibirNoticias(noticias) {
     if (!lista) return;
 
     lista.replaceChildren();
+    if (!noticias.length) lista.append(criarTexto("p", "estado-vazio", "Nenhum comunicado encontrado."));
     noticias.forEach(function (noticia) {
         const artigo = criarTexto("article", "noticia", "");
         let imagem;
@@ -246,10 +269,15 @@ function exibirNoticias(noticias) {
 
         const conteudo = criarTexto("div", "noticia-conteudo", "");
         conteudo.append(
-            criarTexto("small", "", noticia.data || "Comunicado"),
+            criarTexto("small", "etiqueta", `${noticia.tipo === "aviso" ? "Aviso" : "Notícia"} · ${formatarData(noticia.data) || "Comunicado"}`),
             criarTexto("h3", "", noticia.titulo),
             criarTexto("p", "", noticia.descricao)
         );
+        if (noticia.link && linkSeguro(noticia.link)) {
+            const link = criarTexto("a", "", "Saiba mais →");
+            link.href = linkSeguro(noticia.link);
+            conteudo.append(link);
+        }
         artigo.append(imagem, conteudo);
         lista.append(artigo);
     });
@@ -267,12 +295,14 @@ function exibirEventos(eventos) {
         evento.remove();
     });
 
+    lista.querySelectorAll(".estado-vazio").forEach(item => item.remove());
+    if (!eventos.length) lista.append(criarTexto("p", "estado-vazio", "Nenhum evento neste período."));
     eventos.forEach(function (evento) {
         const item = criarTexto("div", "evento", "");
         const data = criarTexto("div", "data", "");
         data.append(
-            criarTexto("strong", "", "•"),
-            criarTexto("span", "", "EVENTO")
+            criarTexto("strong", "", dataValida(evento.data)?.getDate() || "•"),
+            criarTexto("span", "", dataValida(evento.data)?.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").toUpperCase() || "EVENTO")
         );
 
         const conteudo = document.createElement("div");
@@ -281,11 +311,11 @@ function exibirEventos(eventos) {
             criarTexto(
                 "p",
                 "",
-                [evento.data, evento.descricao, evento.local].filter(Boolean).join(" - ")
+                [formatarData(evento.data), evento.descricao, evento.local].filter(Boolean).join(" - ")
             )
         );
         item.append(data, conteudo);
-        lista.append(item);
+        lista.insertBefore(item, lista.querySelector(":scope > .botao"));
     });
 }
 
@@ -318,7 +348,7 @@ function configurarCalendario() {
         month: "long",
         year: "numeric"
     });
-    let mesAtual = new Date(2026, 10, 1);
+    let mesAtual = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
 
     function renderizar() {
         const ano = mesAtual.getFullYear();
@@ -342,10 +372,11 @@ function configurarCalendario() {
         }
 
         const eventosDoMes = eventosDaPlanilha.filter(evento => {
-            const data = /^\d{4}-\d{2}-\d{2}$/.test(evento.data) ? new Date(`${evento.data}T12:00:00`) : null;
+            const data = dataValida(evento.data);
             return data && data.getFullYear() === ano && data.getMonth() === mes;
         });
 
+        if (conteudoCarregado) exibirEventos(eventosDoMes);
         for (let dia = 1; dia <= diasNoMes; dia += 1) {
             const feriado = feriadosDoMes.find(function (item) {
                 return Number(item.data.slice(8, 10)) === dia;
@@ -356,6 +387,11 @@ function configurarCalendario() {
                 String(dia)
             );
             celula.setAttribute("role", "gridcell");
+            const hoje = new Date();
+            if (dia === hoje.getDate() && mes === hoje.getMonth() && ano === hoje.getFullYear()) {
+                celula.classList.add("dia-hoje");
+                celula.setAttribute("aria-current", "date");
+            }
             celula.setAttribute(
                 "aria-label",
                 feriado
@@ -408,6 +444,8 @@ async function carregarConteudoDaPlanilha() {
     const statusAgenda = document.getElementById("agendaStatus");
 
     if (!GOOGLE_SHEETS_CSV_URL) return;
+    if (statusNoticias) statusNoticias.textContent = "Carregando comunicados…";
+    if (statusAgenda) statusAgenda.textContent = "Carregando agenda…";
 
     try {
         const url = new URL(GOOGLE_SHEETS_CSV_URL);
@@ -415,7 +453,7 @@ async function carregarConteudoDaPlanilha() {
             throw new Error("A URL da planilha precisa usar HTTPS.");
         }
 
-        const resposta = await fetch(url);
+        const resposta = await fetch(url, { signal: AbortSignal.timeout(15000) });
         if (!resposta.ok) {
             throw new Error(`A planilha respondeu com status ${resposta.status}.`);
         }
@@ -431,7 +469,9 @@ async function carregarConteudoDaPlanilha() {
             titulo: cabecalhos.indexOf("titulo"),
             data: cabecalhos.indexOf("data"),
             descricao: cabecalhos.indexOf("descricao"),
-            local: cabecalhos.indexOf("local")
+            local: cabecalhos.indexOf("local"),
+            link: cabecalhos.indexOf("link"),
+            publicado: cabecalhos.indexOf("publicado")
         };
 
         if (indices.tipo < 0 || indices.titulo < 0 || indices.descricao < 0) {
@@ -445,21 +485,32 @@ async function carregarConteudoDaPlanilha() {
                 titulo: linha[indices.titulo] || "",
                 data: indices.data >= 0 ? linha[indices.data] || "" : "",
                 descricao: linha[indices.descricao] || "",
-                local: indices.local >= 0 ? linha[indices.local] || "" : ""
+                local: indices.local >= 0 ? linha[indices.local] || "" : "",
+                link: indices.link >= 0 ? linha[indices.link] || "" : "",
+                publicado: indices.publicado >= 0 ? normalizar(linha[indices.publicado] || "") : "sim"
             }))
-            .filter((registro) => registro.titulo && registro.descricao);
+            .filter((registro) => registro.titulo && ["sim", "true", "1"].includes(registro.publicado));
 
         const noticias = registros.filter((registro) =>
             ["noticia", "aviso"].includes(registro.tipo)
         );
-        const eventos = registros.filter((registro) => registro.tipo === "evento");
+        const eventosInvalidos = registros.filter(registro => registro.tipo === "evento" && !dataValida(registro.data)).length;
+        const eventos = registros.filter((registro) => registro.tipo === "evento" && dataValida(registro.data))
+            .sort((a, b) => a.data.localeCompare(b.data));
+        noticias.sort((a, b) => b.data.localeCompare(a.data));
+        conteudoCarregado = true;
+        noticiasDaPlanilha = noticias;
+        document.querySelectorAll(".filtros-noticias input, .filtros-noticias select").forEach(campo => campo.disabled = false);
+        filtrarNoticias();
+        exibirContatos(registros.filter(registro => registro.tipo === "contato"));
 
-        exibirNoticias(noticias);
         eventosDaPlanilha = eventos;
-        exibirEventos(eventos);
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0);
+        exibirEventos(document.getElementById("gradeCalendario") ? eventos : eventos.filter(evento => dataValida(evento.data) >= hoje).slice(0, 4));
         if (atualizarCalendario) atualizarCalendario();
         if (statusNoticias) statusNoticias.textContent = "Conteúdo atualizado pela planilha da escola.";
-        if (statusAgenda) statusAgenda.textContent = "Agenda atualizada pela planilha da escola.";
+        if (statusAgenda) statusAgenda.textContent = `Agenda atualizada pela planilha.${eventosInvalidos ? ` ${eventosInvalidos} evento(s) com data inválida não foram exibidos.` : ""} No calendário, os eventos são filtrados por mês.`;
     } catch (erro) {
         const mensagem = erro instanceof Error ? erro.message : "Erro desconhecido.";
         const aviso = `Não foi possível atualizar o conteúdo: ${mensagem} O conteúdo atual foi mantido.`;
@@ -468,5 +519,44 @@ async function carregarConteudoDaPlanilha() {
     }
 }
 
+function filtrarNoticias() {
+    const busca = (document.getElementById("buscaNoticias")?.value || "").toLocaleLowerCase("pt-BR");
+    const tipo = document.getElementById("tipoNoticia")?.value || "";
+    exibirNoticias(noticiasDaPlanilha.filter(item => (!tipo || item.tipo === tipo)
+        && `${item.titulo} ${item.descricao}`.toLocaleLowerCase("pt-BR").includes(busca)));
+}
+
+function exibirContatos(contatos) {
+    const lista = document.getElementById("contatosExtras");
+    if (!lista) return;
+    lista.replaceChildren();
+    contatos.forEach(contato => {
+        const card = criarTexto("article", "contato-card", "");
+        card.append(criarTexto("h3", "", contato.titulo), criarTexto("p", "", contato.descricao));
+        const href = linkSeguro(contato.link);
+        if (href) {
+            const link = criarTexto("a", "", `Acessar ${contato.titulo} →`);
+            link.href = href;
+            card.append(link);
+        }
+        lista.append(card);
+    });
+}
+
+document.getElementById("buscaNoticias")?.addEventListener("input", filtrarNoticias);
+document.getElementById("tipoNoticia")?.addEventListener("change", filtrarNoticias);
+const facebook = linkSeguro(window.ESCOLA_CONFIG?.facebookUrl || "");
+if (facebook && new URL(facebook).protocol === "https:" && /(^|\.)facebook\.com$/.test(new URL(facebook).hostname)) {
+    document.querySelectorAll("[data-facebook]").forEach(link => { link.href = facebook; link.hidden = false; });
+}
+menuMobile?.setAttribute("aria-controls", "menu");
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && menu?.classList.contains("aberto")) {
+        menu.classList.remove("aberto");
+        menuMobile.setAttribute("aria-expanded", "false");
+        menuMobile.setAttribute("aria-label", "Abrir menu");
+        menuMobile.focus();
+    }
+});
 configurarCarrosselNoticias();
 carregarConteudoDaPlanilha();

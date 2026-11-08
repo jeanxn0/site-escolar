@@ -1,4 +1,6 @@
-﻿tipo,titulo,data,descricao,local
-noticia,Exemplo de notícia,2026-11-10,Substitua este exemplo por uma notícia confirmada,
-aviso,Exemplo de aviso,2026-11-11,Substitua este exemplo por um aviso confirmado,
-evento,Exemplo de evento,2026-11-20,Substitua este exemplo por um evento confirmado,Escola
+tipo,titulo,data,descricao,local,link,publicado
+noticia,Exemplo de notícia,2026-11-10,Substitua por uma notícia confirmada,,,nao
+aviso,Exemplo de aviso,2026-11-11,Substitua por um aviso confirmado,,,nao
+evento,Exemplo de evento,2026-11-20,Substitua por um evento confirmado,Escola,,nao
+contato,Horário de atendimento,,Preencha com o horário confirmado pela secretaria,,,nao
+contato,Facebook,,Página oficial da escola no Facebook,,COLE_O_LINK_OFICIAL,nao
