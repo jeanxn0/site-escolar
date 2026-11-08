@@ -32,3 +32,17 @@ A integração alimenta a agenda que já existe no site. Não utiliza Google Age
 A planilha real já está configurada em config.js e a leitura pública foi validada.
 A aba Conteudos tem quatro exemplos ocultos; Como usar contém as instruções.
 A integração está na proposta de revisão, sem publicação do site.
+
+PROJETOS E FOTOS
+Cada linha com tipo=projeto representa um álbum separado, por exemplo Festa Junina
+ou Feira de Ciências. Informe título, descrição e publicado=sim para exibir.
+A opção mais simples é colar em link o endereço de um álbum/pasta de fotos com
+acesso de visualização. O site exibirá um botão para abrir o álbum.
+Para o carrossel no próprio site, use as colunas fotos e texto_fotos:
+- fotos: URLs HTTPS diretas de imagem, uma por linha dentro da mesma célula.
+- texto_fotos: uma descrição por foto, na mesma ordem, para leitores de tela.
+Links de compartilhamento do Google Fotos/Drive são páginas de álbum, não imagens;
+eles devem ficar em link. Não existe upload direto do computador/celular no site.
+Cada álbum tem controles próprios, navegação por teclado e sem reprodução automática.
+Se uma imagem falhar, aparece uma mensagem e o link do álbum permanece disponível.
+A linha de exemplo está oculta (publicado=nao); não é um evento real da escola.

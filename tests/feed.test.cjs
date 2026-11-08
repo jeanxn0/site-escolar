@@ -16,6 +16,7 @@ function setup(csv, url = 'https://docs.google.com/published.csv', failure = fal
         filtrarNoticias = () => { resultado.noticias = noticiasDaPlanilha; };
         exibirEventos = eventos => { resultado.eventos = eventos; };
         exibirContatos = contatos => { resultado.contatos = contatos; };
+        filtrarProjetos = () => { resultado.projetos = projetosDaPlanilha; };
     `, Object.assign(context, { resultado: {} }));
     context.document.getElementById = id => ['feedStatus', 'agendaStatus'].includes(id) ? status : null;
     return { context, status, run: () => vm.runInContext('carregarConteudoDaPlanilha()', context) };
@@ -65,4 +66,11 @@ test('wrong CSV schema preserves existing content', async () => {
 test('non HTTPS feed is refused', async () => {
     const { status } = await feed('', 'http://example.com/feed.csv');
     assert.match(status.textContent, /precisa usar HTTPS/);
+});
+
+test('published project albums retain photos and descriptions; drafts stay hidden', async () => {
+    const { context } = await feed('tipo,titulo,descricao,publicado,fotos,texto_fotos\nprojeto,Festa Junina,Descrição,sim,https://example.com/foto.jpg,Bandeirinhas\nprojeto,Rascunho,Descrição,nao,,');
+    assert.equal(context.resultado.projetos.length, 1);
+    assert.equal(context.resultado.projetos[0].titulo, 'Festa Junina');
+    assert.equal(context.resultado.projetos[0].textoFotos, 'Bandeirinhas');
 });

@@ -1943,3 +1943,35 @@ body.alto-contraste .dia-hoje { outline: 2px dashed #fff281; }
     .banner-imagem img { height: 200px; }
 }
 @media (forced-colors:active) { .atalho, .noticia, .evento, .dia-calendario { border: 1px solid CanvasText; } }
+
+/* Projetos e fotos cadastrados na planilha. */
+.grade-projetos { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin:22px 0 36px; }
+.card-projeto { min-width:0; border:1px solid var(--cor-borda); border-radius:16px; background:var(--cor-superficie); overflow:hidden; }
+.card-projeto figure { margin:0; }
+.card-projeto figure img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; }
+.foto-projeto-link { display:block; }
+.conteudo-projeto { padding:24px; }
+.conteudo-projeto h3 { font-size:1.35rem; line-height:1.35; color:var(--cor-destaque-escura); margin:10px 0; overflow-wrap:anywhere; }
+.conteudo-projeto p { white-space:pre-line; color:var(--cor-secundaria); overflow-wrap:anywhere; }
+.link-album { display:inline-block; padding:12px 0; margin-top:10px; color:var(--cor-destaque-escura); font-weight:700; text-decoration:underline; min-height:44px; }
+.fotos-projeto { margin:20px 0 0; }
+.fotos-projeto summary, .orientacoes-projetos summary { cursor:pointer; font-weight:700; padding:12px 0; min-height:44px; }
+.galeria-projeto { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:12px 0; }
+.galeria-projeto img { border-radius:8px; }
+.foto-indisponivel { padding:24px; background:var(--cor-suave); color:var(--cor-secundaria); }
+.orientacoes-projetos { padding:18px 24px; border:1px solid var(--cor-borda); border-radius:14px; background:var(--cor-suave); margin-bottom:20px; }
+.orientacoes-projetos ol { padding-left:24px; margin:16px 0; }
+.orientacoes-projetos li { margin:10px 0; }
+.orientacoes-projetos .botao { margin-top:16px; background:var(--cor-destaque); color:#fff; }
+.filtros-projetos { align-items:flex-end; }
+.filtros-projetos .botao { background:var(--cor-destaque); color:#fff; white-space:nowrap; }
+.contador-projetos { font-size:.85rem; color:var(--cor-secundaria); }
+body.texto-ampliado .grade-projetos { grid-template-columns:minmax(0,1fr); }
+@media (max-width:1150px) and (min-width:601px) { .cabecalho { flex-wrap:wrap; } .menu { width:100%; flex-wrap:wrap; justify-content:center; } }
+@media (max-width:700px) { .grade-projetos { grid-template-columns:minmax(0,1fr); gap:20px; } .conteudo-projeto { padding:20px; } .orientacoes-projetos { padding:16px; } .filtros-projetos { align-items:stretch; } }
+
+.slides-projeto { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:var(--cor-destaque) var(--cor-suave); }
+.slides-projeto > figure { flex:0 0 100%; min-width:0; scroll-snap-align:start; }
+.slides-projeto .foto-indisponivel { min-height:220px; }
+.controles-projeto { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px; border-bottom:1px solid var(--cor-borda); font-size:.85rem; }
+.controles-projeto button { width:44px; height:44px; border:1px solid #8ba286; background:var(--cor-superficie); color:var(--cor-destaque-escura); border-radius:50%; font-size:1.2rem; cursor:pointer; }

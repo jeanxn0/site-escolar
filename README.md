@@ -32,3 +32,9 @@ Validação: 12 testes de leitura do feed e preferências de acessibilidade; ins
 ## Acesso pela raiz
 
 Foi adicionada uma entrada index.html na raiz, encaminhando à página inicial existente. O repositório estava sem GitHub Pages ativo durante a verificação. A entrada só será disponibilizada no endereço público após a aprovação e configuração de hospedagem. Nenhuma publicação foi feita nesta proposta.
+
+## Projetos e fotos
+
+Nova página projetos.html, mantendo Atividades. Cada registro tipo=projeto na aba Conteudos é um álbum independente. As colunas opcionais fotos e texto_fotos recebem URLs HTTPS diretas e suas descrições, uma por linha. A coluna link pode abrir um álbum do Google Fotos, pasta Drive ou página do projeto; links de compartilhamento não são incorporados como imagens. Não há upload de arquivos no frontend estático.
+
+O carrossel de cada projeto tem controles e contador próprios, toque/rolagem, teclado e redução de movimento, sem reprodução automática. Falhas de imagem mostram texto de fallback. Links inseguros e fotos duplicadas são descartados; os listeners dos carrosséis removidos são limpos ao filtrar. Projetos sem fotos continuam aparecendo com texto e link. A planilha mantém os registros existentes e acrescenta um exemplo não publicado.

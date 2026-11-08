@@ -2,6 +2,8 @@
 const GOOGLE_SHEETS_CSV_URL = window.ESCOLA_CONFIG?.planilhaCsvUrl || "";
 let eventosDaPlanilha = [];
 let noticiasDaPlanilha = [];
+let projetosDaPlanilha = [];
+let limparCarrosseisProjetos = [];
 let conteudoCarregado = false;
 
 const menuMobile = document.getElementById("menuMobile");
@@ -402,10 +404,12 @@ const atualizarCalendario = configurarCalendario();
 async function carregarConteudoDaPlanilha() {
     const statusNoticias = document.getElementById("feedStatus");
     const statusAgenda = document.getElementById("agendaStatus");
+    const statusProjetos = document.getElementById("projetosStatus");
 
     if (!GOOGLE_SHEETS_CSV_URL) return;
     if (statusNoticias) statusNoticias.textContent = "Carregando comunicados…";
     if (statusAgenda) statusAgenda.textContent = "Carregando agenda…";
+    if (statusProjetos) statusProjetos.textContent = "Carregando projetos…";
 
     try {
         const url = new URL(GOOGLE_SHEETS_CSV_URL);
@@ -431,7 +435,9 @@ async function carregarConteudoDaPlanilha() {
             descricao: cabecalhos.indexOf("descricao"),
             local: cabecalhos.indexOf("local"),
             link: cabecalhos.indexOf("link"),
-            publicado: cabecalhos.indexOf("publicado")
+            publicado: cabecalhos.indexOf("publicado"),
+            fotos: cabecalhos.indexOf("fotos"),
+            textoFotos: cabecalhos.indexOf("texto_fotos")
         };
 
         if (indices.tipo < 0 || indices.titulo < 0 || indices.descricao < 0) {
@@ -447,7 +453,9 @@ async function carregarConteudoDaPlanilha() {
                 descricao: linha[indices.descricao] || "",
                 local: indices.local >= 0 ? linha[indices.local] || "" : "",
                 link: indices.link >= 0 ? linha[indices.link] || "" : "",
-                publicado: indices.publicado >= 0 ? normalizar(linha[indices.publicado] || "") : "sim"
+                publicado: indices.publicado >= 0 ? normalizar(linha[indices.publicado] || "") : "sim",
+                fotos: indices.fotos >= 0 ? linha[indices.fotos] || "" : "",
+                textoFotos: indices.textoFotos >= 0 ? linha[indices.textoFotos] || "" : ""
             }))
             .filter((registro) => registro.titulo && ["sim", "true", "1"].includes(registro.publicado));
 
@@ -464,6 +472,12 @@ async function carregarConteudoDaPlanilha() {
         filtrarNoticias();
         exibirContatos(registros.filter(registro => registro.tipo === "contato"));
 
+        projetosDaPlanilha = registros.filter(registro => registro.tipo === "projeto")
+            .sort((a,b) => b.data.localeCompare(a.data));
+        filtrarProjetos();
+        const campoProjetos = document.getElementById("buscaProjetos");
+        if (campoProjetos) campoProjetos.disabled = false;
+        if (statusProjetos) statusProjetos.textContent = "Projetos atualizados pela planilha da escola.";
         eventosDaPlanilha = eventos;
         const hoje = new Date();
         hoje.setHours(0, 0, 0, 0);
@@ -476,6 +490,7 @@ async function carregarConteudoDaPlanilha() {
         const aviso = `Não foi possível atualizar o conteúdo: ${mensagem} O conteúdo atual foi mantido.`;
         if (statusNoticias) statusNoticias.textContent = aviso;
         if (statusAgenda) statusAgenda.textContent = aviso;
+        if (statusProjetos) statusProjetos.textContent = aviso;
     }
 }
 
@@ -502,6 +517,134 @@ function exibirContatos(contatos) {
         lista.append(card);
     });
 }
+
+function urlImagemSegura(valor) {
+    try {
+        const url = new URL(valor);
+        return url.protocol === "https:" && !url.username && !url.password ? url.href : "";
+    } catch { return ""; }
+}
+
+function fotosDoProjeto(projeto) {
+    const descricoes = (projeto.textoFotos || "").split(/\r?\n/);
+    const vistas = new Set();
+    return (projeto.fotos || "").split(/\r?\n/)
+        .map((url,indice) => ({ url: urlImagemSegura(url.trim()), alt: descricoes[indice]?.trim() || `Registro do projeto ${projeto.titulo}, foto ${indice + 1}.` }))
+        .filter(foto => {
+            if (!foto.url || vistas.has(foto.url)) return false;
+            const host = new URL(foto.url).hostname;
+            if (["drive.google.com", "photos.google.com", "photos.app.goo.gl"].includes(host)) return false;
+            vistas.add(foto.url); return true;
+        });
+}
+
+function criarFotoProjeto(foto) {
+    const figura = document.createElement("figure");
+    const link = criarTexto("a", "foto-projeto-link", "");
+    link.href = foto.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", `Ampliar foto em nova aba: ${foto.alt}`);
+    const imagem = document.createElement("img");
+    imagem.src = foto.url;
+    imagem.alt = foto.alt;
+    imagem.loading = "lazy";
+    imagem.decoding = "async";
+    imagem.referrerPolicy = "no-referrer";
+    imagem.addEventListener("error", () => {
+        figura.replaceChildren(criarTexto("p", "foto-indisponivel", "Foto indisponível. Consulte o álbum do projeto, se houver."));
+    }, { once: true });
+    link.append(imagem);
+    figura.append(link);
+    return figura;
+}
+
+function criarCarrosselProjeto(fotos, titulo) {
+    const grupo = criarTexto("div", "carrossel-projeto", "");
+    grupo.setAttribute("role", "group");
+    grupo.setAttribute("aria-label", `Fotos de ${titulo}`);
+    const slides = criarTexto("div", "slides-projeto", "");
+    slides.tabIndex = 0;
+    slides.setAttribute("aria-label", `Fotos de ${titulo}. Use as setas esquerda e direita para navegar.`);
+    fotos.forEach((foto, indice) => {
+        const figura = criarFotoProjeto(foto);
+        figura.setAttribute("role", "group");
+        figura.setAttribute("aria-label", `Foto ${indice + 1} de ${fotos.length}`);
+        slides.append(figura);
+    });
+    grupo.append(slides);
+    if (fotos.length <= 1) return grupo;
+    const controles = criarTexto("div", "controles-projeto", "");
+    const anterior = criarTexto("button", "", "←");
+    const proxima = criarTexto("button", "", "→");
+    [anterior,proxima].forEach(botao => botao.type = "button");
+    anterior.setAttribute("aria-label", `Foto anterior de ${titulo}`);
+    proxima.setAttribute("aria-label", `Próxima foto de ${titulo}`);
+    const posicao = criarTexto("span", "", `1 de ${fotos.length} fotos`);
+    posicao.setAttribute("role", "status");
+    posicao.setAttribute("aria-live", "polite");
+    function atualizar() {
+        const largura = slides.clientWidth;
+        const indice = largura > 0 ? Math.max(0, Math.min(fotos.length - 1, Math.round(slides.scrollLeft / largura))) : 0;
+        anterior.disabled = indice === 0;
+        proxima.disabled = indice === fotos.length - 1;
+        posicao.textContent = `${indice + 1} de ${fotos.length} fotos`;
+    }
+    function irPara(indice) {
+        const reduzido = document.body.classList.contains("reduzir-animacoes")
+            || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        slides.scrollTo({left:Math.max(0,Math.min(fotos.length - 1,indice)) * slides.clientWidth, behavior:reduzido ? "auto" : "smooth"});
+    }
+    function avancar(delta) { irPara(Math.round(slides.scrollLeft / (slides.clientWidth || 1)) + delta); }
+    anterior.addEventListener("click", () => avancar(-1));
+    proxima.addEventListener("click", () => avancar(1));
+    slides.addEventListener("scroll", atualizar, {passive:true});
+    slides.addEventListener("keydown", event => {
+        if (event.target !== slides || !["ArrowLeft","ArrowRight","Home","End"].includes(event.key)) return;
+        event.preventDefault();
+        if (event.key === "Home") irPara(0);
+        else if (event.key === "End") irPara(fotos.length - 1);
+        else avancar(event.key === "ArrowRight" ? 1 : -1);
+    });
+    window.addEventListener("resize", atualizar);
+    limparCarrosseisProjetos.push(() => window.removeEventListener("resize", atualizar));
+    anterior.disabled = true;
+    controles.append(anterior,posicao,proxima);
+    grupo.append(controles);
+    return grupo;
+}
+
+function exibirProjetos(projetos) {
+    const lista = document.getElementById("listaProjetos");
+    if (!lista) return;
+    limparCarrosseisProjetos.forEach(limpar => limpar());
+    limparCarrosseisProjetos = [];
+    lista.replaceChildren();
+    const contador = document.getElementById("resultadoProjetos");
+    if (contador) contador.textContent = `${projetos.length} ${projetos.length === 1 ? "projeto encontrado" : "projetos encontrados"}`;
+    if (!projetos.length) lista.append(criarTexto("p", "estado-vazio", "Nenhum projeto encontrado. Novos registros serão compartilhados em breve."));
+    projetos.forEach(projeto => {
+        const card = criarTexto("article", "card-projeto", "");
+        const fotos = fotosDoProjeto(projeto);
+        if (fotos.length) card.append(criarCarrosselProjeto(fotos,projeto.titulo));
+        const conteudo = criarTexto("div", "conteudo-projeto", "");
+        conteudo.append(criarTexto("small", "etiqueta", ["Projeto escolar", formatarData(projeto.data), projeto.local].filter(Boolean).join(" · ")),
+            criarTexto("h3", "", projeto.titulo), criarTexto("p", "", projeto.descricao));
+        const album = urlImagemSegura(projeto.link || "");
+        if (album) {
+            const link = criarTexto("a", "link-album", "Abrir álbum ou página do projeto ↗");
+            link.href = album; link.target = "_blank"; link.rel = "noopener noreferrer";
+            conteudo.append(link);
+        }
+        card.append(conteudo); lista.append(card);
+    });
+}
+
+function filtrarProjetos() {
+    const busca = (document.getElementById("buscaProjetos")?.value || "").toLocaleLowerCase("pt-BR");
+    exibirProjetos(projetosDaPlanilha.filter(projeto => `${projeto.titulo} ${projeto.descricao} ${projeto.local}`.toLocaleLowerCase("pt-BR").includes(busca)));
+}
+document.getElementById("buscaProjetos")?.addEventListener("input", filtrarProjetos);
 
 document.getElementById("buscaNoticias")?.addEventListener("input", filtrarNoticias);
 document.getElementById("tipoNoticia")?.addEventListener("change", filtrarNoticias);
