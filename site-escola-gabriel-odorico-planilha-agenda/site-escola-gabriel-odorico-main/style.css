@@ -1975,3 +1975,54 @@ body.texto-ampliado .grade-projetos { grid-template-columns:minmax(0,1fr); }
 .slides-projeto .foto-indisponivel { min-height:220px; }
 .controles-projeto { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px; border-bottom:1px solid var(--cor-borda); font-size:.85rem; }
 .controles-projeto button { width:44px; height:44px; border:1px solid #8ba286; background:var(--cor-superficie); color:var(--cor-destaque-escura); border-radius:50%; font-size:1.2rem; cursor:pointer; }
+
+/* Painel nativo: esconder explicitamente o conteúdo quando fechado, inclusive em navegadores móveis. */
+.painel-acessibilidade { position:relative; min-width:0; }
+.painel-acessibilidade > summary { display:flex; align-items:center; gap:14px; justify-content:space-between; list-style:none; padding-top:12px; padding-bottom:12px; min-height:48px; }
+.painel-acessibilidade > summary::-webkit-details-marker { display:none; }
+.painel-acessibilidade > summary::marker { content:""; }
+.titulo-painel-acessibilidade { display:flex; align-items:center; gap:8px; }
+.resumo-acessibilidade { margin-left:0; margin-right:auto; }
+.indicador-painel { flex:0 0 auto; font-size:1.4rem; font-weight:400; line-height:1; }
+.painel-acessibilidade[open] .indicador-painel { transform:rotate(45deg); }
+.painel-acessibilidade:not([open]) > .acessibilidade { display:none; }
+.painel-acessibilidade[open] > .acessibilidade { display:grid; grid-template-columns:minmax(0,1fr); gap:18px; min-width:0; max-width:100%; }
+.painel-acessibilidade .acessibilidade > * { min-width:0; }
+.acoes-acessibilidade { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding-bottom:14px; border-bottom:1px solid var(--cor-borda); }
+.painel-acessibilidade .acessibilidade button { white-space:normal; overflow-wrap:anywhere; max-width:100%; min-height:44px; line-height:1.45; }
+.painel-acessibilidade .opcoes-acessibilidade { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); align-items:stretch; gap:10px; width:100%; }
+.painel-acessibilidade .opcoes-acessibilidade button { text-align:left; padding:12px 16px; border-radius:8px; }
+.painel-acessibilidade .opcoes-acessibilidade button[aria-pressed="true"]::before { content:"✓ "; }
+.painel-acessibilidade .grupo-acessibilidade > div { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.painel-acessibilidade .status-acessibilidade:empty { display:none; }
+.painel-acessibilidade .ajuda-acessibilidade { max-width:75ch; }
+.painel-acessibilidade #fecharAcessibilidade { font-weight:700; }
+/* Mapa em destaque na página Contatos. */
+.canais-contato { grid-template-columns:repeat(3,minmax(0,1fr)); margin-bottom:32px; }
+.localizacao-contato { display:grid; grid-template-columns:minmax(260px,.75fr) minmax(0,1.8fr); border:1px solid var(--cor-borda); border-radius:18px; background:var(--cor-superficie); overflow:hidden; margin:8px 0 44px; }
+.localizacao-info { min-width:0; padding:32px; align-self:center; }
+.localizacao-info h2 { color:var(--cor-destaque-escura); font-size:1.8rem; line-height:1.2; margin:14px 0 16px; }
+.localizacao-info p { color:var(--cor-secundaria); }
+.localizacao-info address { font-style:normal; line-height:1.85; margin:14px 0 24px; }
+.localizacao-info .botao-rota { background:var(--cor-destaque); color:#fff; display:block; text-align:center; padding:14px 16px; font-weight:700; line-height:1.5; }
+.link-mapa-completo { display:block; padding:12px 0; text-decoration:underline; color:var(--cor-destaque-escura); font-weight:700; }
+.ajuda-mapa { font-size:.8rem; line-height:1.7; margin-top:10px; }
+.mapa-contato { min-width:0; background:var(--cor-suave); }
+.mapa-contato iframe { display:block; width:100%; height:100%; min-height:520px; border:0; }
+body.texto-ampliado .localizacao-contato { grid-template-columns:minmax(0,1fr); }
+body.texto-ampliado .canais-contato { grid-template-columns:minmax(0,1fr); }
+@media (max-width:850px) {
+    .canais-contato { grid-template-columns:minmax(0,1fr); gap:16px; }
+    .localizacao-contato { grid-template-columns:minmax(0,1fr); }
+    .localizacao-info { padding:24px; }
+    .mapa-contato iframe { height:400px; min-height:400px; }
+}
+@media (max-width:450px) {
+    .painel-acessibilidade .acoes-acessibilidade { display:grid; grid-template-columns:minmax(0,1fr); }
+    .painel-acessibilidade #fecharAcessibilidade { grid-row:1; }
+    .painel-acessibilidade .grupo-acessibilidade > div { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; }
+    .painel-acessibilidade #restaurarFonte { grid-column:1/-1; }
+    .painel-acessibilidade #diminuirFonte, .painel-acessibilidade #aumentarFonte { padding:8px 2px; }
+    .mapa-contato iframe { height:360px; min-height:360px; }
+    .localizacao-info { padding:22px; }
+}

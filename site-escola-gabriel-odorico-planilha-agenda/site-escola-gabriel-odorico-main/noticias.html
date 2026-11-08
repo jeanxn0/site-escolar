@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Acompanhe avisos e notícias da Escola Estadual Gabriel Odorico.">
     <title>Avisos e Notícias | Escola Estadual Gabriel Odorico</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261108-contatos-a11y">
 </head>
 
 <body>
     <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
     <details class="painel-acessibilidade" id="preferenciasAcessibilidade">
-        <summary><span aria-hidden="true">◉</span> Acessibilidade <span class="resumo-acessibilidade">Ajuste a leitura do site</span></summary>
-        <div class="acessibilidade" role="group" aria-label="Preferências de acessibilidade">
+        <summary aria-controls="opcoesAcessibilidade"><span class="titulo-painel-acessibilidade"><span aria-hidden="true">◉</span> Acessibilidade</span><span class="resumo-acessibilidade">Ajustes de leitura e navegação</span><span class="indicador-painel" aria-hidden="true">+</span></summary>
+        <div class="acessibilidade" id="opcoesAcessibilidade" role="group" aria-label="Preferências de acessibilidade">
+            <div class="acoes-acessibilidade"><button type="button" id="restaurarPreferencias">Restaurar preferências</button><button type="button" id="fecharAcessibilidade">Fechar opções <span aria-hidden="true">×</span></button></div>
             <div class="grupo-acessibilidade"><span>Tamanho do texto</span><div>
                 <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
                 <output id="escalaFonte" aria-label="Tamanho atual do texto">100%</output>
@@ -28,7 +29,6 @@
                 <button type="button" id="destacarLinks" aria-pressed="false">Destacar links</button>
             </div>
             <p class="ajuda-acessibilidade">Use Tab para navegar, Enter para ativar e Esc para fechar os controles. Suas preferências ficam salvas neste navegador.</p>
-            <button type="button" id="restaurarPreferencias">Restaurar preferências</button>
             <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
         </div>
     </details>
@@ -114,7 +114,7 @@
     </footer>
 
 <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=20261108-contatos-a11y"></script>
 </body>
 
 </html>

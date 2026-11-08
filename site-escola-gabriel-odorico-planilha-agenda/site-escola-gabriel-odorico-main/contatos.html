@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Veja os canais de contato da Escola Estadual Gabriel Odorico.">
     <title>Contatos | Escola Estadual Gabriel Odorico</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261108-contatos-a11y">
 </head>
 
 <body>
     <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
     <details class="painel-acessibilidade" id="preferenciasAcessibilidade">
-        <summary><span aria-hidden="true">◉</span> Acessibilidade <span class="resumo-acessibilidade">Ajuste a leitura do site</span></summary>
-        <div class="acessibilidade" role="group" aria-label="Preferências de acessibilidade">
+        <summary aria-controls="opcoesAcessibilidade"><span class="titulo-painel-acessibilidade"><span aria-hidden="true">◉</span> Acessibilidade</span><span class="resumo-acessibilidade">Ajustes de leitura e navegação</span><span class="indicador-painel" aria-hidden="true">+</span></summary>
+        <div class="acessibilidade" id="opcoesAcessibilidade" role="group" aria-label="Preferências de acessibilidade">
+            <div class="acoes-acessibilidade"><button type="button" id="restaurarPreferencias">Restaurar preferências</button><button type="button" id="fecharAcessibilidade">Fechar opções <span aria-hidden="true">×</span></button></div>
             <div class="grupo-acessibilidade"><span>Tamanho do texto</span><div>
                 <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
                 <output id="escalaFonte" aria-label="Tamanho atual do texto">100%</output>
@@ -28,7 +29,6 @@
                 <button type="button" id="destacarLinks" aria-pressed="false">Destacar links</button>
             </div>
             <p class="ajuda-acessibilidade">Use Tab para navegar, Enter para ativar e Esc para fechar os controles. Suas preferências ficam salvas neste navegador.</p>
-            <button type="button" id="restaurarPreferencias">Restaurar preferências</button>
             <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
         </div>
     </details>
@@ -55,12 +55,26 @@
 
     <main class="container pagina-contatos" id="conteudo" tabindex="-1">
         <div class="cabecalho-pagina"><span class="sobretitulo">FALE COM A ESCOLA</span><h2>Contatos</h2><p>Encontre nossos canais de atendimento e saiba como chegar.</p></div>
-        <div class="contatos-grid">
+        <div class="contatos-grid canais-contato">
             <article class="contato-card"><span class="etiqueta">Secretaria</span><h3>Telefone</h3><p>Entre em contato com a escola.</p><a href="tel:+553532951349">(35) 3295-1349 →</a></article>
             <article class="contato-card"><span class="etiqueta">Atendimento</span><h3>E-mail institucional</h3><p>Envie sua mensagem para a escola.</p><a href="mailto:escola.173045@educacao.mg.gov.br">escola.173045@educacao.mg.gov.br →</a></article>
             <article class="contato-card"><span class="etiqueta">Comunidade</span><h3>Redes sociais</h3><p>Acompanhe as novidades da escola.</p><a href="https://www.instagram.com/eegabrielodorico/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></article>
-            <article class="contato-card"><span class="etiqueta">Visite a escola</span><h3>Onde estamos</h3><p>Av. Santa Cruz, 315 — Centro, Machado/MG — CEP 37750-000</p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=-21.6808297%2C-45.9228668" target="_blank" rel="noopener noreferrer">Traçar rota ↗</a></article>
+
         </div>
+        <section class="localizacao-contato" aria-labelledby="tituloLocalizacao">
+            <div class="localizacao-info">
+                <span class="sobretitulo">VENHA NOS VISITAR</span>
+                <h2 id="tituloLocalizacao">Encontre a escola</h2>
+                <p>Escola Estadual Gabriel Odorico</p>
+                <address>Av. Santa Cruz, 315 — Centro<br>Machado, MG<br>CEP 37750-000</address>
+                <a class="botao botao-rota" href="https://www.google.com/maps/dir/?api=1&amp;destination=-21.6808297%2C-45.9228668" target="_blank" rel="noopener noreferrer">Traçar rota no Google Maps ↗</a>
+                <a class="link-mapa-completo" href="https://www.google.com/maps?q=-21.6808297%2C-45.9228668&amp;z=17" target="_blank" rel="noopener noreferrer">Abrir mapa em nova aba ↗</a>
+                <p class="ajuda-mapa">Amplie o mapa para explorar a região. Você também pode usar os links acima para consultar a rota fora do site.</p>
+            </div>
+            <div class="mapa-contato">
+                <iframe title="Localização da Escola Estadual Gabriel Odorico em Machado, Minas Gerais" src="https://www.google.com/maps?q=-21.6808297,-45.9228668&amp;z=17&amp;output=embed" width="100%" height="520" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+        </section>
         <section aria-labelledby="tituloOutrosContatos"><h2 id="tituloOutrosContatos">Outras informações de atendimento</h2><p>Novos canais e horários confirmados pela escola aparecerão aqui.</p><p class="feed-status" id="feedStatus" role="status" aria-live="polite"></p><div class="contatos-grid" id="contatosExtras"></div></section>
     </main>
 
@@ -85,7 +99,7 @@
     </footer>
 
 <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=20261108-contatos-a11y"></script>
 </body>
 
 </html>

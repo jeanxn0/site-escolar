@@ -38,3 +38,11 @@ Foi adicionada uma entrada index.html na raiz, encaminhando à página inicial e
 Nova página projetos.html, mantendo Atividades. Cada registro tipo=projeto na aba Conteudos é um álbum independente. As colunas opcionais fotos e texto_fotos recebem URLs HTTPS diretas e suas descrições, uma por linha. A coluna link pode abrir um álbum do Google Fotos, pasta Drive ou página do projeto; links de compartilhamento não são incorporados como imagens. Não há upload de arquivos no frontend estático.
 
 O carrossel de cada projeto tem controles e contador próprios, toque/rolagem, teclado e redução de movimento, sem reprodução automática. Falhas de imagem mostram texto de fallback. Links inseguros e fotos duplicadas são descartados; os listeners dos carrosséis removidos são limpos ao filtrar. Projetos sem fotos continuam aparecendo com texto e link. A planilha mantém os registros existentes e acrescenta um exemplo não publicado.
+
+## Correção de Contatos e painel de acessibilidade
+
+A página Contatos inclui mapa de 520 px no computador e 360 px em celulares estreitos, endereço em área própria e links para abrir o mapa/traçar rota fora do site. Os contatos ficam em três cartões no desktop e em coluna no celular.
+
+O painel de acessibilidade agora organiza as opções em uma grade adaptável e mostra Fechar opções e Restaurar preferências no início. O conteúdo fechado fica explicitamente oculto. Botão de fechar e Escape retornam o foco ao título; botões ausentes não interrompem o script. URLs de CSS/JS versionadas evitam misturar controles novos com arquivos antigos do cache.
+
+Validação da correção: 21 testes passaram, incluindo ausência de controles, fechamento e retorno de foco. Mapa carregado no navegador em desktop e quadro de 390 px, tamanhos 520/360 px confirmados. Painel no celular em 200% sem rolagem horizontal; restauração, fechamento, contraste e Escape conferidos.

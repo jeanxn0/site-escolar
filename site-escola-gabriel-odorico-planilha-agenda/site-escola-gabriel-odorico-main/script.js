@@ -57,8 +57,10 @@ function configurarAcessibilidade() {
         });
         const medida = document.getElementById("escalaFonte");
         if (medida) medida.textContent = `${Math.round(preferencias.escala * 100)}%`;
-        document.getElementById("diminuirFonte").disabled = preferencias.escala <= 1;
-        document.getElementById("aumentarFonte").disabled = preferencias.escala >= 2;
+        const diminuir = document.getElementById("diminuirFonte");
+        const aumentar = document.getElementById("aumentarFonte");
+        if (diminuir) diminuir.disabled = preferencias.escala <= 1;
+        if (aumentar) aumentar.disabled = preferencias.escala >= 2;
         let lembrete = "";
         if (salvar) {
             try { localStorage.setItem(chave, JSON.stringify(preferencias)); }
@@ -80,8 +82,16 @@ function configurarAcessibilidade() {
     document.getElementById("restaurarPreferencias")?.addEventListener("click", () => {
         preferencias = { ...padrao }; aplicar("Preferências restauradas.");
     });
+    function fecharPainel() {
+        painel.open = false;
+        painel.querySelector("summary")?.focus();
+    }
+    document.getElementById("fecharAcessibilidade")?.addEventListener("click", fecharPainel);
     painel.addEventListener("keydown", event => {
-        if (event.key === "Escape") { painel.open = false; painel.querySelector("summary").focus(); }
+        if (event.key === "Escape") {
+            event.preventDefault();
+            fecharPainel();
+        }
     });
     aplicar("", false);
 }
