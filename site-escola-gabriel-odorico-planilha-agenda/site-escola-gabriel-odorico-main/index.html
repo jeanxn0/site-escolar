@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a Escola Estadual Gabriel Odorico, acompanhe avisos e consulte a agenda escolar.">
+
+    <title>Escola Estadual Gabriel Odorico</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <div class="acessibilidade" role="group" aria-label="Opções de acessibilidade">
+        <span class="acessibilidade-titulo">Acessibilidade</span>
+        <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
+        <button type="button" id="aumentarFonte" aria-label="Aumentar tamanho do texto">A+</button>
+        <button type="button" id="restaurarFonte">Texto normal</button>
+        <button type="button" id="altoContraste" aria-pressed="false">Alto contraste</button>
+        <button type="button" id="coresAcessiveis" aria-pressed="false">Cores acessíveis</button>
+        <button type="button" id="reduzirAnimacoes" aria-pressed="false">Reduzir animações</button>
+        <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
+    </div>
+
+    <header class="cabecalho">
+
+        <div class="logo">
+            <img src="515514932_17965787864923751_4791740859324778420_n.jpg" alt="Logo da escola">
+        </div>
+
+        <div class="identidade">
+
+            <h1>Escola Estadual Gabriel Odorico</h1>
+
+            <p>Educação, respeito e novas possibilidades</p>
+
+        </div>
+
+        <button
+            class="menu-mobile"
+            id="menuMobile"
+            aria-label="Abrir menu"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+        <nav class="menu" id="menu" aria-label="Navegação principal">
+
+            <a href="index.html" class="ativo" aria-current="page">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="atividades.html">Atividades</a>
+            <a href="noticias.html">Avisos</a>
+            <a href="calendario.html">Calendário</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+    </header>
+
+
+    <!-- BANNER PRINCIPAL -->
+
+    <section class="banner" aria-labelledby="tituloInicio">
+
+        <div class="banner-texto">
+
+            <h2 id="tituloInicio">Bem-vindos à Escola Estadual Gabriel Odorico</h2>
+
+            <p>
+                Educação, respeito e novas possibilidades para toda a comunidade escolar.
+            </p>
+
+            <a href="sobre.html" class="botao">Conheça nossa escola</a>
+
+        </div>
+
+        <div class="banner-imagem">
+
+            <img
+                src="Foto.png"
+                alt="Registro da Escola Estadual Gabriel Odorico">
+
+        </div>
+
+    </section>
+
+
+    <!-- ATALHOS RÁPIDOS -->
+
+    <section class="container">
+
+        <div class="titulo-secao">
+
+            <h2>Acesso rápido</h2>
+
+        </div>
+
+        <div class="atalhos">
+
+            <a href="noticias.html" class="atalho">
+                <span class="icone" aria-hidden="true">▤</span>
+                <h3>Avisos</h3>
+                <p>Comunicados da escola</p>
+                <span class="atalho-link">Ver avisos <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a href="atividades.html" class="atalho">
+                <span class="icone" aria-hidden="true">✦</span>
+                <h3>Atividades</h3>
+                <p>Projetos e ações escolares</p>
+                <span class="atalho-link">Conhecer atividades <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a href="calendario.html" class="atalho">
+                <span class="icone" aria-hidden="true">◷</span>
+                <h3>Agenda</h3>
+                <p>Datas importantes</p>
+                <span class="atalho-link">Ver calendário <span aria-hidden="true">→</span></span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main class="container" id="conteudo">
+
+        <div class="conteudo-principal">
+
+            <!-- COLUNA PRINCIPAL -->
+
+            <div class="coluna-principal">
+
+
+                <!-- AVISOS E NOTÍCIAS -->
+
+                <section class="noticias-section" id="avisos">
+
+                    <div class="titulo-secao">
+
+                        <h2>Avisos e Notícias</h2>
+
+                        <a href="noticias.html">Ver todos os avisos <span aria-hidden="true">→</span></a>
+
+                    </div>
+
+                    <p class="feed-status" id="feedStatus" role="status" aria-live="polite">
+                        
+                    </p>
+
+                    <div class="carrossel-noticias" role="group" aria-label="Carrossel de avisos e notícias">
+                        <div class="noticias" id="carrosselNoticias" tabindex="0" aria-label="Notícias; use os botões anterior e próxima para navegar">
+                            <article class="noticia">
+                                <img class="imagem-noticia" src="Foto.png" alt="">
+
+                                <div class="noticia-conteudo">
+                                    <small>Comunicados</small>
+                                    <h3>Avisos da escola</h3>
+                                    <p>Acompanhe neste espaço os comunicados e as informações importantes da escola.</p>
+                                    <a href="noticias.html">Acessar avisos <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+
+                            <article class="noticia">
+                                <img class="imagem-noticia imagem-noticia-alternativa" src="Foto.png" alt="">
+                                <div class="noticia-conteudo">
+                                    <small>Vida escolar</small>
+                                    <h3>Atividades e projetos</h3>
+                                    <p>Conheça as ações e os projetos desenvolvidos pela comunidade escolar.</p>
+                                    <a href="atividades.html">Ver atividades <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+
+                            <article class="noticia">
+                                <img class="imagem-noticia imagem-noticia-comunidade" src="Foto.png" alt="">
+                                <div class="noticia-conteudo">
+                                    <small>Informações</small>
+                                    <h3>Novidades da comunidade</h3>
+                                    <p>Consulte as atualizações e participe da vida escolar.</p>
+                                    <a href="noticias.html">Ver novidades <span aria-hidden="true">→</span></a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="controles-carrossel">
+                            <span id="posicaoCarrossel" role="status" aria-live="polite">1–2 de 3 notícias</span>
+                            <div class="botoes-carrossel">
+                                <button type="button" id="noticiaAnterior" aria-label="Mostrar notícias anteriores">←</button>
+                                <button type="button" id="proximaNoticia" aria-label="Mostrar próximas notícias">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- DESTAQUES DA ESCOLA -->
+
+                <section class="destaques" id="sobre">
+
+                    <div class="titulo-secao">
+
+                        <h2>Sobre a Escola</h2>
+
+                        <a href="sobre.html">Saiba mais <span aria-hidden="true">→</span></a>
+
+                    </div>
+
+                    <div class="apresentacao-escola">
+                        <img src="Foto.png" alt="Registro da Escola Estadual Gabriel Odorico">
+                        <p>
+                            Um espaço de aprendizagem, convivência e novas possibilidades para estudantes e famílias.
+                        </p>
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- PRÉVIA DA AGENDA ESCOLAR -->
+
+            <aside class="eventos" aria-labelledby="agendaInicio">
+                <h2 id="agendaInicio">Agenda Escolar</h2>
+                <p class="feed-status" id="agendaStatus" role="status" aria-live="polite"></p>
+                <p>Próximas datas importantes de 2026:</p>
+
+                <div class="evento">
+                    <div class="data"><strong>20</strong><span>NOV</span></div>
+                    <div>
+                        <h3>Consciência Negra</h3>
+                        <p>20/11/2026 — feriado nacional.</p>
+                    </div>
+                </div>
+
+                <div class="evento">
+                    <div class="data"><strong>25</strong><span>DEZ</span></div>
+                    <div>
+                        <h3>Natal</h3>
+                        <p>25/12/2026 — feriado nacional.</p>
+                    </div>
+                </div>
+
+                <a class="botao" href="calendario.html">Ver agenda completa →</a>
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="rodape" id="contato">
+
+
+        <!-- NOME DA ESCOLA -->
+
+        <div class="rodape-escola">
+
+            <h3>Escola Estadual Gabriel Odorico</h3>
+
+            <p>
+                Educação, respeito e novas possibilidades
+            </p>
+
+        </div>
+
+
+        <!-- ENDEREÇO -->
+
+        <div class="rodape-endereco">
+
+            <svg class="icone-localizacao" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="12" cy="9" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+
+            <div class="endereco-texto">
+
+                <p>
+                    Av. Santa Cruz, 315 — Centro, Machado/MG — CEP 37750-000
+                </p>
+
+                <a class="link-mapa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Escola+Estadual+Gabriel+Odorico" target="_blank" rel="noopener noreferrer">
+                    Ver rota no Google Maps
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAPA INTERATIVO DA ESCOLA -->
+        <div class="rodape-mapa">
+            <h3>Onde estamos</h3>
+            <iframe
+                title="Mapa da Escola Estadual Gabriel Odorico em Machado, MG"
+                src="https://www.google.com/maps?q=-21.6808297,-45.9228668&amp;z=17&amp;output=embed"
+                width="100%"
+                height="320"
+                style="border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+            <a class="link-mapa" href="https://www.google.com/maps/dir/?api=1&amp;destination=-21.6808297%2C-45.9228668" target="_blank" rel="noopener noreferrer">Como chegar à escola</a>
+        </div>
+
+        <!-- TELEFONE E EMAIL -->
+
+        <div class="rodape-contato">
+
+            <div class="contato-item">
+
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a15 15 0 0 0 6 6l1.5-2 4 1.5v3c0 1.1-.9 2-2 2A15.5 15.5 0 0 1 4.5 5.5c0-1.1.9-2 2-2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+
+                <p>Telefone: <a href="tel:+553532951349">(35) 3295-1349</a></p>
+
+            </div>
+
+            <div class="contato-item">
+
+                <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+
+                <p><a href="mailto:escola.173045@educacao.mg.gov.br">escola.173045@educacao.mg.gov.br</a></p>
+
+            </div>
+
+            <div class="contato-item">
+
+                <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="6.5" r="1" fill="currentColor"/></svg>
+
+                <a class="link-instagram" href="https://www.instagram.com/eegabrielodorico/" target="_blank" rel="noopener noreferrer">
+                    Siga a escola no Instagram
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

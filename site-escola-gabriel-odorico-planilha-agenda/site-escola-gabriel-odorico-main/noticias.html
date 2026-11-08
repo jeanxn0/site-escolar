@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acompanhe avisos e notícias da Escola Estadual Gabriel Odorico.">
+    <title>Avisos e Notícias | Escola Estadual Gabriel Odorico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="515514932_17965787864923751_4791740859324778420_n.jpg" alt="Logo da escola">
+        </div>
+        <div class="identidade">
+            <h1>Escola Estadual Gabriel Odorico</h1>
+            <p>Educação, respeito e novas possibilidades</p>
+        </div>
+        <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <nav class="menu" id="menu" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="atividades.html">Atividades</a>
+            <a href="noticias.html" class="ativo" aria-current="page">Avisos</a>
+            <a href="calendario.html">Calendário</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main class="container" id="conteudo">
+        <section class="noticias-section" id="avisos">
+            <div class="titulo-secao">
+                <h2>Avisos e Notícias</h2>
+                <a href="calendario.html">Ver agenda escolar →</a>
+            </div>
+            <p class="feed-status" id="feedStatus" role="status" aria-live="polite"></p>
+            <div class="noticias">
+                <article class="noticia">
+                    <div class="imagem-placeholder" aria-hidden="true"></div>
+                    <div class="noticia-conteudo">
+                        <small>Comunicados</small>
+                        <h3>Avisos da escola</h3>
+                        <p>Este espaço será utilizado para divulgar avisos e informações importantes da escola.</p>
+                    </div>
+                </article>
+                <article class="noticia">
+                    <div class="imagem-placeholder" aria-hidden="true"></div>
+                    <div class="noticia-conteudo">
+                        <small>Atividades</small>
+                        <h3>Atividades escolares</h3>
+                        <p>Acompanhe aqui as atividades e os projetos desenvolvidos pela comunidade escolar.</p>
+                    </div>
+                </article>
+                <article class="noticia">
+                    <div class="imagem-placeholder" aria-hidden="true"></div>
+                    <div class="noticia-conteudo">
+                        <small>Informações</small>
+                        <h3>Notícias e atualizações</h3>
+                        <p>As atualizações da escola serão publicadas neste espaço para alunos, responsáveis e comunidade.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape" id="contato">
+        <div class="rodape-escola">
+            <h3>Escola Estadual Gabriel Odorico</h3>
+            <p>Educação, respeito e novas possibilidades</p>
+        </div>
+        <div class="rodape-endereco">
+            <span class="icone-localizacao" aria-hidden="true">📍</span>
+            <div class="endereco-texto">
+                <p>Av. Santa Cruz, 315 — Centro, Machado/MG — CEP 37750-000</p>
+                <a class="link-mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Santa+Cruz+315+Machado+MG" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+            </div>
+        </div>
+        <div class="rodape-contato">
+            <div class="contato-item"><span aria-hidden="true">☎</span><p>Telefone: <a href="tel:+553532951349">(35) 3295-1349</a></p></div>
+            <div class="contato-item"><span aria-hidden="true">✉</span><p><a href="mailto:escola.173045@educacao.mg.gov.br">escola.173045@educacao.mg.gov.br</a></p></div>
+            <div class="contato-item"><span aria-hidden="true">📷</span><a class="link-instagram" href="https://www.instagram.com/eegabrielodorico/" target="_blank" rel="noopener noreferrer">Siga a escola no Instagram</a></div>
+        </div>
+    </footer>
+
+    <div class="acessibilidade" role="group" aria-label="Opções de acessibilidade">
+        <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
+        <button type="button" id="aumentarFonte" aria-label="Aumentar tamanho do texto">A+</button>
+        <button type="button" id="altoContraste" aria-pressed="false">Alto contraste</button>
+        <button type="button" id="coresAcessiveis" aria-pressed="false">Modo para daltonismo</button>
+        <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

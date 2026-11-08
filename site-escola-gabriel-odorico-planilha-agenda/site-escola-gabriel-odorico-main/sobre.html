@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a Escola Estadual Gabriel Odorico, sua história e informações institucionais.">
+    <title>Sobre a Escola | Escola Estadual Gabriel Odorico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="515514932_17965787864923751_4791740859324778420_n.jpg" alt="Logo da escola">
+        </div>
+        <div class="identidade">
+            <h1>Escola Estadual Gabriel Odorico</h1>
+            <p>Educação, respeito e novas possibilidades</p>
+        </div>
+        <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <nav class="menu" id="menu" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="sobre.html" class="ativo" aria-current="page">Sobre</a>
+            <a href="atividades.html">Atividades</a>
+            <a href="noticias.html">Avisos</a>
+            <a href="calendario.html">Calendário</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main class="container" id="conteudo">
+        <section class="destaques">
+            <div class="titulo-secao">
+                <h2>Sobre a Escola</h2>
+                <a href="#contato">Fale com a escola →</a>
+            </div>
+            <p class="sobre-introducao">
+                A Escola Estadual Gabriel Odorico compartilha informações sobre sua instituição,
+                sua comunidade e suas atividades. Os dados oficiais serão publicados conforme
+                forem confirmados pela escola.
+            </p>
+
+            <div class="destaques-cards">
+                <article class="destaque">
+                    <div class="imagem-placeholder" aria-hidden="true"></div>
+                    <div class="destaque-conteudo">
+                        <h3>História da instituição</h3>
+                        <p>A instituição teve origem no Grupo Escolar Gabriel Odorico, criado pelo Decreto Estadual nº 3.774, de 21 de abril de 1952. Em 12 de fevereiro de 1974, o Decreto nº 16.097 reorganizou a unidade como Escola Estadual de 1º Grau Gabriel Odorico. <a href="https://www.almg.gov.br/legislacao-mineira/DEC/3774/1952/" target="_blank" rel="noopener noreferrer">Fonte: ALMG (1952)</a> e <a href="https://www.almg.gov.br/legislacao-mineira/DEC/16097/1974/" target="_blank" rel="noopener noreferrer">ALMG (1974)</a>.</p>
+                    </div>
+                </article>
+                <article class="destaque">
+                    <div class="imagem-placeholder" aria-hidden="true"></div>
+                    <div class="destaque-conteudo">
+                        <h3>Comunidade escolar</h3>
+                        <p>A escola integra a rede estadual de ensino de Minas Gerais, vinculada à Superintendência Regional de Ensino de Varginha. Oferece anos finais do Ensino Fundamental, Ensino Médio e Educação de Jovens e Adultos (EJA), conforme cadastros educacionais. Código INEP: 31173045.</p>
+                    </div>
+                </article>
+                <article class="destaque">
+                    <div class="imagem-placeholder" aria-hidden="true"></div>
+                    <div class="destaque-conteudo">
+                        <h3>Atividades e projetos</h3>
+                        <p>Segundo dados do Censo Escolar de 2024, a unidade conta com biblioteca, laboratório de informática, quadra esportiva coberta, refeitório e recursos de acessibilidade. Projetos e eventos atuais devem ser confirmados com a escola. <a href="https://www.escol.as/154369-ee-gabriel-odorico" target="_blank" rel="noopener noreferrer">Fonte: dados do Censo Escolar</a>.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape" id="contato">
+        <div class="rodape-escola">
+            <h3>Escola Estadual Gabriel Odorico</h3>
+            <p>Educação, respeito e novas possibilidades</p>
+        </div>
+        <div class="rodape-endereco">
+            <span class="icone-localizacao" aria-hidden="true">📍</span>
+            <div class="endereco-texto">
+                <p>Av. Santa Cruz, 315 — Centro, Machado/MG — CEP 37750-000</p>
+                <a class="link-mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Santa+Cruz+315+Machado+MG" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+            </div>
+        </div>
+        <div class="rodape-contato">
+            <div class="contato-item"><span aria-hidden="true">☎</span><p>Telefone: <a href="tel:+553532951349">(35) 3295-1349</a></p></div>
+            <div class="contato-item"><span aria-hidden="true">✉</span><p><a href="mailto:escola.173045@educacao.mg.gov.br">escola.173045@educacao.mg.gov.br</a></p></div>
+            <div class="contato-item"><span aria-hidden="true">📷</span><a class="link-instagram" href="https://www.instagram.com/eegabrielodorico/" target="_blank" rel="noopener noreferrer">Siga a escola no Instagram</a></div>
+        </div>
+    </footer>
+
+    <div class="acessibilidade" role="group" aria-label="Opções de acessibilidade">
+        <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
+        <button type="button" id="aumentarFonte" aria-label="Aumentar tamanho do texto">A+</button>
+        <button type="button" id="altoContraste" aria-pressed="false">Alto contraste</button>
+        <button type="button" id="coresAcessiveis" aria-pressed="false">Modo para daltonismo</button>
+        <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

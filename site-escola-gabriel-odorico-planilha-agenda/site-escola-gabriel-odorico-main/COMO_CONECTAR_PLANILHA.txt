@@ -1,0 +1,13 @@
+CONFIGURAR GOOGLE PLANILHAS — SITE DA ESCOLA
+
+1. No Google Drive, crie uma planilha e importe o arquivo modelo-planilha-escola.csv.
+2. Renomeie a aba para Conteudos. Use as colunas tipo, titulo, data, descricao, local.
+3. Tipo deve ser noticia, aviso ou evento. Para eventos no calendário, use data AAAA-MM-DD.
+4. No Google Planilhas: Arquivo > Compartilhar > Publicar na Web; escolha a aba Conteudos e formato CSV; copie o link CSV publicado. A publicação torna os dados dessa aba públicos: não inclua dados pessoais de alunos.
+5. No script.js, substitua GOOGLE_SHEETS_CSV_URL = "" pelo link entre aspas.
+6. Hospede o site em HTTPS para a leitura da planilha. Pode haver atraso de atualização por cache/publicação.
+7. Noticias e avisos aparecerão nas áreas do site; eventos na lista e marcados nos dias do calendário.
+
+ATENÇÃO: O calendário exibido no site não é o Google Agenda. Para criar eventos automaticamente no Google Agenda, é preciso autorizar uma conta Google e configurar uma automação via Apps Script ou conectar a integração Google Calendar. Isso ainda não está ativado.
+
+Os três registros do CSV são EXEMPLOS: substitua-os antes de publicar.
