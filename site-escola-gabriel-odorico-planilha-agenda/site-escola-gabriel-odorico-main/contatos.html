@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veja os canais de contato da Escola Estadual Gabriel Odorico.">
+    <title>Contatos | Escola Estadual Gabriel Odorico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <details class="painel-acessibilidade" id="preferenciasAcessibilidade">
+        <summary><span aria-hidden="true">◉</span> Acessibilidade <span class="resumo-acessibilidade">Ajuste a leitura do site</span></summary>
+        <div class="acessibilidade" role="group" aria-label="Preferências de acessibilidade">
+            <div class="grupo-acessibilidade"><span>Tamanho do texto</span><div>
+                <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
+                <output id="escalaFonte" aria-label="Tamanho atual do texto">100%</output>
+                <button type="button" id="aumentarFonte" aria-label="Aumentar tamanho do texto">A+</button>
+                <button type="button" id="restaurarFonte">Texto normal</button>
+            </div></div>
+            <div class="opcoes-acessibilidade">
+                <button type="button" id="altoContraste" aria-pressed="false">Alto contraste</button>
+                <button type="button" id="coresAcessiveis" aria-pressed="false">Cores alternativas</button>
+                <button type="button" id="reduzirAnimacoes" aria-pressed="false">Reduzir movimentos</button>
+                <button type="button" id="espacarTexto" aria-pressed="false">Mais espaço no texto</button>
+                <button type="button" id="destacarLinks" aria-pressed="false">Destacar links</button>
+            </div>
+            <p class="ajuda-acessibilidade">Use Tab para navegar, Enter para ativar e Esc para fechar os controles. Suas preferências ficam salvas neste navegador.</p>
+            <button type="button" id="restaurarPreferencias">Restaurar preferências</button>
+            <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
+        </div>
+    </details>
+
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="515514932_17965787864923751_4791740859324778420_n.jpg" alt="Brasão da Escola Estadual Gabriel Odorico">
+        </div>
+        <div class="identidade">
+            <h1>Escola Estadual Gabriel Odorico</h1>
+            <p>Educação, respeito e novas possibilidades</p>
+        </div>
+        <button class="menu-mobile" id="menuMobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <nav class="menu" id="menu" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="atividades.html">Atividades</a>
+            <a href="projetos.html">Projetos e fotos</a>
+            <a href="noticias.html">Avisos</a>
+            <a href="calendario.html">Calendário</a>
+            <a href="contatos.html" class="ativo" aria-current="page">Contatos</a>
+        </nav>
+    </header>
+
+    <main class="container pagina-contatos" id="conteudo" tabindex="-1">
+        <div class="cabecalho-pagina"><span class="sobretitulo">FALE COM A ESCOLA</span><h2>Contatos</h2><p>Encontre nossos canais de atendimento e saiba como chegar.</p></div>
+        <div class="contatos-grid">
+            <article class="contato-card"><span class="etiqueta">Secretaria</span><h3>Telefone</h3><p>Entre em contato com a escola.</p><a href="tel:+553532951349">(35) 3295-1349 →</a></article>
+            <article class="contato-card"><span class="etiqueta">Atendimento</span><h3>E-mail institucional</h3><p>Envie sua mensagem para a escola.</p><a href="mailto:escola.173045@educacao.mg.gov.br">escola.173045@educacao.mg.gov.br →</a></article>
+            <article class="contato-card"><span class="etiqueta">Comunidade</span><h3>Redes sociais</h3><p>Acompanhe as novidades da escola.</p><a href="https://www.instagram.com/eegabrielodorico/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></article>
+            <article class="contato-card"><span class="etiqueta">Visite a escola</span><h3>Onde estamos</h3><p>Av. Santa Cruz, 315 — Centro, Machado/MG — CEP 37750-000</p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=-21.6808297%2C-45.9228668" target="_blank" rel="noopener noreferrer">Traçar rota ↗</a></article>
+        </div>
+        <section aria-labelledby="tituloOutrosContatos"><h2 id="tituloOutrosContatos">Outras informações de atendimento</h2><p>Novos canais e horários confirmados pela escola aparecerão aqui.</p><p class="feed-status" id="feedStatus" role="status" aria-live="polite"></p><div class="contatos-grid" id="contatosExtras"></div></section>
+    </main>
+
+    <footer class="rodape" id="contato">
+        <div class="rodape-escola">
+            <h3>Escola Estadual Gabriel Odorico</h3>
+            <p>Educação, respeito e novas possibilidades</p>
+        </div>
+        <div class="rodape-endereco">
+            <span class="icone-localizacao" aria-hidden="true">📍</span>
+            <div class="endereco-texto">
+                <p>Av. Santa Cruz, 315 — Centro, Machado/MG — CEP 37750-000</p>
+                <a class="link-mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Santa+Cruz+315+Machado+MG" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+            </div>
+        </div>
+        <div class="rodape-contato">
+            <div class="contato-item"><span aria-hidden="true">☎</span><p>Telefone: <a href="tel:+553532951349">(35) 3295-1349</a></p></div>
+            <div class="contato-item"><span aria-hidden="true">✉</span><p><a href="mailto:escola.173045@educacao.mg.gov.br">escola.173045@educacao.mg.gov.br</a></p></div>
+            <div class="contato-item"><span aria-hidden="true">📷</span><a class="link-instagram" href="https://www.instagram.com/eegabrielodorico/" target="_blank" rel="noopener noreferrer">Siga a escola no Instagram</a></div>
+        </div>
+
+    </footer>
+
+<script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,13 +1,48 @@
-CONFIGURAR GOOGLE PLANILHAS — SITE DA ESCOLA
+CONFIGURAR A PLANILHA — ESCOLA ESTADUAL GABRIEL ODORICO
 
-1. No Google Drive, crie uma planilha e importe o arquivo modelo-planilha-escola.csv.
-2. Renomeie a aba para Conteudos. Use as colunas tipo, titulo, data, descricao, local.
-3. Tipo deve ser noticia, aviso ou evento. Para eventos no calendário, use data AAAA-MM-DD.
-4. No Google Planilhas: Arquivo > Compartilhar > Publicar na Web; escolha a aba Conteudos e formato CSV; copie o link CSV publicado. A publicação torna os dados dessa aba públicos: não inclua dados pessoais de alunos.
-5. No script.js, substitua GOOGLE_SHEETS_CSV_URL = "" pelo link entre aspas.
-6. Hospede o site em HTTPS para a leitura da planilha. Pode haver atraso de atualização por cache/publicação.
-7. Noticias e avisos aparecerão nas áreas do site; eventos na lista e marcados nos dias do calendário.
+A integração alimenta a agenda que já existe no site. Não utiliza Google Agenda.
 
-ATENÇÃO: O calendário exibido no site não é o Google Agenda. Para criar eventos automaticamente no Google Agenda, é preciso autorizar uma conta Google e configurar uma automação via Apps Script ou conectar a integração Google Calendar. Isso ainda não está ativado.
+1. Entre no Google Planilhas com a conta que administrará os comunicados.
+   Se criar um Gmail, a própria escola deve escolher o endereço, concluir a
+   verificação e configurar a recuperação. Nunca coloque senhas no projeto.
+2. Crie uma planilha, importe modelo-planilha-escola.csv e nomeie a aba Conteudos.
+3. Mantenha os cabeçalhos tipo,titulo,data,descricao,local,link,publicado.
+   tipo: noticia, aviso, evento ou contato.
+   data: AAAA-MM-DD. Formate a coluna como texto simples antes de preencher.
+   Para evento, a data é obrigatória e deve existir no calendário.
+   titulo: obrigatório. descricao e local: texto livre, sem HTML.
+   link: opcional; HTTPS, mailto: ou tel:. Não use links privados.
+   publicado: sim para aparecer; nao ou vazio para ocultar.
+   Modelos antigos sem publicado continuam aceitos e exibem todas as linhas.
+4. Substitua os exemplos, todos inicialmente ocultos. A aba será pública:
+   não inclua dados pessoais ou informações internas, mesmo em linhas ocultas
+   por publicado=nao. Esse campo apenas controla a exibição no site.
+5. Arquivo > Compartilhar > Publicar na Web. Selecione SOMENTE Conteudos,
+   formato CSV e copie o link publicado. Compartilhar o link de edição não basta.
+6. Cole o link em planilhaCsvUrl no arquivo config.js. Não altere script.js.
+7. Notícias/avisos aparecem na página inicial e na página Avisos; contatos
+   adicionais aparecem na página Contatos; eventos ficam na agenda existente.
+   Na página inicial aparecem até quatro próximos eventos. No calendário,
+   os eventos são listados por mês. Use as setas para navegar.
+8. Alterações da planilha aparecem ao recarregar o site; a publicação do Google
+   pode ter atraso. O site preserva seu conteúdo estático se a leitura falhar.
+   Datas inválidas são ignoradas com aviso na área da agenda.
+9. Teste em uma cópia antes de publicar. Não há publicação automática neste PR.
 
-Os três registros do CSV são EXEMPLOS: substitua-os antes de publicar.
+A planilha real já está configurada em config.js e a leitura pública foi validada.
+A aba Conteudos tem quatro exemplos ocultos; Como usar contém as instruções.
+A integração está na proposta de revisão, sem publicação do site.
+
+PROJETOS E FOTOS
+Cada linha com tipo=projeto representa um álbum separado, por exemplo Festa Junina
+ou Feira de Ciências. Informe título, descrição e publicado=sim para exibir.
+A opção mais simples é colar em link o endereço de um álbum/pasta de fotos com
+acesso de visualização. O site exibirá um botão para abrir o álbum.
+Para o carrossel no próprio site, use as colunas fotos e texto_fotos:
+- fotos: URLs HTTPS diretas de imagem, uma por linha dentro da mesma célula.
+- texto_fotos: uma descrição por foto, na mesma ordem, para leitores de tela.
+Links de compartilhamento do Google Fotos/Drive são páginas de álbum, não imagens;
+eles devem ficar em link. Não existe upload direto do computador/celular no site.
+Cada álbum tem controles próprios, navegação por teclado e sem reprodução automática.
+Se uma imagem falhar, aparece uma mensagem e o link do álbum permanece disponível.
+A linha de exemplo está oculta (publicado=nao); não é um evento real da escola.
