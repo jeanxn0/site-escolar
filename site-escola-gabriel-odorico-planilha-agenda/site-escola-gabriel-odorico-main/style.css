@@ -82,13 +82,13 @@ a {
 }
 
 .identidade h1 {
-    font-size: 23px;
+    font-size: 1.4375rem;
     margin-bottom: 5px;
 }
 
 .identidade p {
     color: #666;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .menu {
@@ -99,7 +99,7 @@ a {
 
 .menu a {
     padding: 12px 15px;
-    font-size: 14px;
+    font-size: 0.875rem;
     border-radius: 4px;
 }
 
@@ -112,7 +112,7 @@ a {
     display: none;
     background: none;
     border: none;
-    font-size: 28px;
+    font-size: 1.75rem;
     cursor: pointer;
 }
 
@@ -133,12 +133,12 @@ a {
 }
 
 .banner-texto h2 {
-    font-size: 36px;
+    font-size: 2.25rem;
     margin-bottom: 15px;
 }
 
 .banner-texto p {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 1.5;
     margin-bottom: 20px;
 }
@@ -179,11 +179,11 @@ a {
 }
 
 .titulo-secao h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .titulo-secao a {
-    font-size: 14px;
+    font-size: 0.875rem;
     white-space: nowrap;
 }
 
@@ -212,17 +212,17 @@ a {
 
 .icone {
     display: block;
-    font-size: 35px;
+    font-size: 2.1875rem;
     margin-bottom: 10px;
 }
 
 .atalho h3 {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-bottom: 8px;
 }
 
 .atalho p {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #666;
     margin-bottom: 10px;
 }
@@ -252,7 +252,7 @@ a {
 .feed-status {
     margin: -4px 0 12px;
     color: #555;
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.4;
 }
 
@@ -345,13 +345,13 @@ a {
     display: block;
 
     color: #777;
-    font-size: 11px;
+    font-size: 0.6875rem;
 
     margin-bottom: 5px;
 }
 
 .noticia h3 {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.2;
 
     margin: 0 0 8px 0;
@@ -360,7 +360,7 @@ a {
 .noticia p {
     color: #666;
 
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.35;
 
     margin-bottom: 8px;
@@ -369,7 +369,7 @@ a {
 .noticia a {
     display: inline-block;
 
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: bold;
 
     margin-top: auto;
@@ -386,7 +386,7 @@ a {
 .sobre-introducao {
     margin: -2px 0 14px;
     color: #555;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5;
 }
 
@@ -435,7 +435,7 @@ a {
 }
 
 .destaque h3 {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.2;
 
     margin-bottom: 8px;
@@ -444,7 +444,7 @@ a {
 .destaque p {
     color: #666;
 
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.35;
 }
 
@@ -462,7 +462,7 @@ a {
 }
 
 .eventos h2 {
-    font-size: 21px;
+    font-size: 1.3125rem;
     margin-bottom: 15px;
 }
 
@@ -488,20 +488,20 @@ a {
 }
 
 .data strong {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .data span {
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .evento h3 {
-    font-size: 14px;
+    font-size: 0.875rem;
     margin-bottom: 5px;
 }
 
 .evento p {
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: #777;
 }
 
@@ -519,7 +519,7 @@ a {
 .calendario p {
     color: #666;
 
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5;
 
     margin-bottom: 12px;
@@ -529,7 +529,7 @@ a {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
 
 .calendario th,
@@ -577,7 +577,7 @@ a {
     border-radius: 50%;
     background: #f7f7f7;
     color: #222;
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
@@ -599,7 +599,7 @@ a {
 .dias-semana {
     padding-bottom: 8px;
     color: #666;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: bold;
 }
 
@@ -617,7 +617,7 @@ a {
     border: 1px solid #eee;
     border-radius: 5px;
     background: #fff;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .dia-calendario.vazio {
@@ -646,7 +646,7 @@ a {
 .lista-feriados-mes h3,
 .lista-eventos-escola h3 {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .feriado-mes {
@@ -662,7 +662,7 @@ a {
 .feriado-mes p,
 #semFeriados {
     color: #666;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.4;
 }
 
@@ -710,7 +710,7 @@ body.alto-contraste .seta-calendario {
 }
 
 .rodape-escola h3 {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
 
     margin-bottom: 3px;
@@ -719,7 +719,7 @@ body.alto-contraste .seta-calendario {
 }
 
 .rodape-escola p {
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: #666;
 
     white-space: nowrap;
@@ -745,7 +745,7 @@ body.alto-contraste .seta-calendario {
 }
 
 .endereco-texto p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #666;
 
     line-height: 1.5;
@@ -757,7 +757,7 @@ body.alto-contraste .seta-calendario {
     display: inline-block;
     margin-top: 5px;
     color: #333;
-    font-size: 12px;
+    font-size: 0.75rem;
     text-decoration: underline;
 }
 
@@ -788,7 +788,7 @@ body.alto-contraste .seta-calendario {
 }
 
 .contato-item p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #666;
 
     white-space: nowrap;
@@ -796,7 +796,7 @@ body.alto-contraste .seta-calendario {
 
 .link-instagram {
     color: #666;
-    font-size: 12px;
+    font-size: 0.75rem;
     text-decoration: underline;
 }
 
@@ -823,7 +823,7 @@ body.alto-contraste .seta-calendario {
 
 .status-acessibilidade {
     color: #333;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .acessibilidade button {
@@ -899,7 +899,7 @@ body.cores-acessiveis .marcador-feriado {
 
 body.cores-acessiveis .marcador-feriado::after {
     content: "F";
-    font-size: 10px;
+    font-size: 0.625rem;
     font-weight: bold;
 }
 
@@ -971,11 +971,11 @@ body.cores-acessiveis .seta-calendario {
     }
 
     .identidade h1 {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .identidade p {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     .menu-mobile {
@@ -1009,11 +1009,11 @@ body.cores-acessiveis .seta-calendario {
     }
 
     .banner-texto h2 {
-        font-size: 27px;
+        font-size: 1.6875rem;
     }
 
     .banner-texto p {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .banner-imagem img {
@@ -1058,11 +1058,11 @@ body.cores-acessiveis .seta-calendario {
     /* TÍTULOS */
 
     .titulo-secao h2 {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
     .titulo-secao a {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
 
@@ -1099,11 +1099,11 @@ body.cores-acessiveis .seta-calendario {
     .seta-calendario {
         width: 36px;
         height: 36px;
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
     .dias-semana {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
 
     .grade-calendario {
@@ -1112,7 +1112,7 @@ body.cores-acessiveis .seta-calendario {
 
     .dia-calendario {
         min-height: 44px;
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
 }
@@ -1141,7 +1141,7 @@ body.cores-acessiveis .seta-calendario {
 .calendario td {
     text-align: center;
     padding: 4px 2px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     height: 27px;
 }
 
@@ -1244,7 +1244,7 @@ body {
 
 .banner-texto h2 {
     max-width: 620px;
-    font-size: clamp(30px, 4vw, 48px);
+    font-size: clamp(1.875rem, 4vw, 3rem);
     line-height: 1.12;
 }
 
@@ -1319,7 +1319,7 @@ body {
     color: var(--cor-destaque-escura);
     background: #e5f0ec;
     border-radius: 12px;
-    font-size: 25px;
+    font-size: 1.5625rem;
 }
 
 .atalho h3 {
@@ -1332,7 +1332,7 @@ body {
 
 .atalho-link {
     color: var(--cor-destaque);
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 700;
 }
 
@@ -1397,7 +1397,7 @@ body {
 
 .noticia small {
     color: var(--cor-destaque);
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .06em;
@@ -1405,18 +1405,18 @@ body {
 
 .noticia h3 {
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .noticia p {
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5;
 }
 
 .noticia a {
     margin-top: auto;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .controles-carrossel {
@@ -1426,7 +1426,7 @@ body {
     gap: 12px;
     padding-top: 6px;
     color: var(--cor-secundaria);
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
 
 .botoes-carrossel {
@@ -1442,7 +1442,7 @@ body {
     border: 1px solid var(--cor-borda);
     border-radius: 50%;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .botoes-carrossel button:hover:not(:disabled) {
@@ -1481,7 +1481,7 @@ body {
 .apresentacao-escola p {
     max-width: 420px;
     color: var(--cor-secundaria);
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .eventos {
@@ -1493,7 +1493,7 @@ body {
 
 .eventos > p:not(.feed-status) {
     color: var(--cor-secundaria);
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .evento {
@@ -1576,7 +1576,7 @@ body {
 .acessibilidade-titulo {
     margin-right: auto;
     color: var(--cor-destaque-escura);
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 700;
 }
 
@@ -1587,7 +1587,7 @@ body {
     background: var(--cor-superficie);
     border-color: #9aa9a2;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
 
 .acessibilidade button[aria-pressed="true"] {
@@ -1673,7 +1673,7 @@ body.reduzir-animacoes *::after {
     }
 
     .banner-texto h2 {
-        font-size: 32px;
+        font-size: 2rem;
     }
 
     .atalhos {
@@ -1754,30 +1754,30 @@ input:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline: 3
 .container { padding-bottom: 40px; }
 .cabecalho { box-shadow: 0 3px 16px #163d3908; }
 .noticia, .contato-card, .apresentacao-escola { box-shadow: 0 6px 24px #163d3906; }
-.noticia p { font-size: 15px; line-height: 1.6; white-space: pre-line; }
-.noticia h3 { font-size: 19px; line-height: 1.35; }
+.noticia p { font-size: 0.9375rem; line-height: 1.6; white-space: pre-line; }
+.noticia h3 { font-size: 1.1875rem; line-height: 1.35; }
 .noticia-conteudo { overflow-wrap: anywhere; }
 .noticias-section > .noticias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .noticias-section > .noticias .noticia { flex-direction: column; padding: 24px; border-radius: 14px; border-top: 3px solid var(--cor-destaque); }
 .noticias-section > .noticias .imagem-placeholder { display: none; }
-.etiqueta { color: var(--cor-destaque-escura); font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+.etiqueta { color: var(--cor-destaque-escura); font-size: 0.75rem; font-weight: 700; letter-spacing: .03em; }
 .filtros-noticias { display: flex; gap: 16px; margin: 24px 0; padding: 20px; border: 1px solid var(--cor-borda); border-radius: 12px; background: var(--cor-superficie); }
-.filtros-noticias label { display: grid; gap: 6px; flex: 1; font-weight: 600; font-size: 14px; min-width: 0; }
+.filtros-noticias label { display: grid; gap: 6px; flex: 1; font-weight: 600; font-size: 0.875rem; min-width: 0; }
 .filtros-noticias input, .filtros-noticias select { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #809a91; border-radius: 7px; color: var(--cor-texto); background: var(--cor-superficie); }
 .estado-vazio { padding: 24px; color: var(--cor-secundaria); grid-column: 1 / -1; }
 .dia-hoje { background: #e3efea; font-weight: 800; border: 2px solid var(--cor-destaque); }
 .dia-com-evento { outline-color: var(--cor-destaque); }
 .evento p { overflow-wrap: anywhere; }
 .cabecalho-pagina { padding: 20px 0 30px; max-width: 700px; }
-.cabecalho-pagina h2 { font-size: clamp(32px, 5vw, 48px); color: var(--cor-destaque-escura); margin: 8px 0; }
-.sobretitulo { color: var(--cor-destaque); font-weight: 700; font-size: 12px; letter-spacing: .13em; }
+.cabecalho-pagina h2 { font-size: clamp(2rem, 5vw, 3rem); color: var(--cor-destaque-escura); margin: 8px 0; }
+.sobretitulo { color: var(--cor-destaque); font-weight: 700; font-size: 0.75rem; letter-spacing: .13em; }
 .contatos-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 24px 0 40px; }
 .contato-card { padding: 28px; border: 1px solid var(--cor-borda); border-radius: 16px; background: var(--cor-superficie); min-width: 0; }
-.contato-card h3 { font-size: 23px; margin: 8px 0; color: var(--cor-destaque-escura); }
+.contato-card h3 { font-size: 1.4375rem; margin: 8px 0; color: var(--cor-destaque-escura); }
 .contato-card p { color: var(--cor-secundaria); margin-bottom: 16px; white-space: pre-line; }
 .contato-card a { display: block; color: var(--cor-destaque); font-weight: 700; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 4px; padding: 8px 0; }
 .rodape a, .rodape p { overflow-wrap: anywhere; }
-@media (min-width: 1001px) { .cabecalho { gap: 16px; } .menu a { padding: 12px 10px; } .identidade h1 { font-size: 20px; } }
+@media (min-width: 1001px) { .cabecalho { gap: 16px; } .menu a { padding: 12px 10px; } .identidade h1 { font-size: 1.25rem; } }
 @media (max-width: 700px) {
     .titulo-secao { flex-wrap: wrap; align-items: flex-start; }
     .titulo-secao a { white-space: normal; }
@@ -1786,14 +1786,160 @@ input:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline: 3
     .contato-card { padding: 22px; }
     .acessibilidade { flex-wrap: wrap; }
     .menu-mobile { min-width: 44px; }
-    .banner-texto h2 { font-size: clamp(28px, 7.5vw, 38px); }
+    .banner-texto h2 { font-size: clamp(1.75rem, 7.5vw, 2.375rem); }
     .calendario-pagina { padding: 14px; }
-    .navegacao-calendario h2 { font-size: 21px; }
+    .navegacao-calendario h2 { font-size: 1.3125rem; }
 }
 @media (max-width: 400px) {
     .cabecalho { gap: 10px; padding: 12px 4%; }
     .logo img { width: 58px; height: 54px; }
-    .identidade h1 { font-size: 16px; }
-    .identidade p { font-size: 11px; }
+    .identidade h1 { font-size: 1rem; }
+    .identidade p { font-size: 0.6875rem; }
     .dia-calendario { min-height: 40px; padding: 4px 1px; }
 }
+
+/* Cores do brasão em tons suaves: verde, amarelo e vermelho. */
+:root {
+    --cor-texto: #233d35;
+    --cor-secundaria: #50675e;
+    --cor-fundo: #fafbf7;
+    --cor-superficie: #fff;
+    --cor-borda: #d9e3d9;
+    --cor-destaque: #286442;
+    --cor-destaque-escura: #204e36;
+    --cor-acento: #f2d889;
+    --cor-suave: #edf4e9;
+    --cor-rosa: #f8e8e3;
+}
+html { font-size: calc(100% * var(--escala-texto, 1)); scroll-padding-top: 20px; }
+body { background: var(--cor-fundo); font-size: 1rem; line-height: 1.65; }
+:focus-visible { outline: 3px solid #99520c; outline-offset: 4px; }
+#conteudo:focus { outline: none; }
+.pular-conteudo { position: fixed; z-index: 100; border-radius: 8px; }
+.pular-conteudo:focus { top: 10px; outline: 3px solid #99520c; }
+a { text-underline-offset: .2em; }
+button, summary, .menu a { touch-action: manipulation; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+.cabecalho { padding: 22px max(4%, calc((100% - 1280px) / 2)); gap: 18px; border-top: 4px solid #dce8d5; box-shadow: none; }
+.logo { flex: 0 0 auto; }
+.logo img { width: 76px; height: 72px; }
+.identidade h1 { font-size: 1.15rem; line-height: 1.3; }
+.identidade p { font-size: .8rem; }
+.menu a { border-radius: 8px; padding: 12px 10px; font-size: .85rem; }
+.menu .ativo { background: var(--cor-suave); box-shadow: inset 0 -3px var(--cor-destaque); }
+.menu-mobile { border-radius: 8px; color: var(--cor-destaque-escura); }
+.banner { padding: 52px max(5%, calc((100% - 1240px) / 2)) 58px; gap: 56px; background: linear-gradient(110deg,#edf4e9 0%,#f4f7ed 62%,#faf4de 100%); color: var(--cor-texto); border-bottom: 1px solid var(--cor-borda); }
+.banner::before { display: none; }
+.banner-texto { flex: 1.08; }
+.sobretitulo-banner { display: inline-block; font-size: .7rem; color: var(--cor-destaque-escura); letter-spacing: .14em; font-weight: 700; padding: 7px 13px; border: 1px solid #bfd1b8; border-radius: 50px; margin-bottom: 22px; }
+.banner-texto h2 { font-size: clamp(2.15rem,4.1vw,3.5rem); font-weight: 750; line-height: 1.13; letter-spacing: -.035em; color: var(--cor-destaque-escura); max-width: 650px; margin-bottom: 22px; }
+.banner-texto p { color: var(--cor-secundaria); font-size: 1rem; max-width: 470px; line-height: 1.8; }
+.acoes-banner { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.banner .botao { background: var(--cor-destaque); color: #fff; border: 1px solid var(--cor-destaque); font-size: .9rem; padding: 13px 19px; border-radius: 9px; }
+.banner .botao:hover { background: var(--cor-destaque-escura); }
+.banner .botao-secundario { color: var(--cor-destaque-escura); background: #ffffffaa; border-color: #aac1a5; }
+.banner .botao-secundario:hover { background: #fff; }
+.banner-imagem { flex: 1; transform: rotate(-1deg); padding: 9px; border-radius: 22px; background: #fff; border: 1px solid #e1e7da; box-shadow: 0 14px 30px #244e3610; }
+.banner-imagem img { display: block; height: clamp(220px,25vw,310px); box-shadow: none; border-radius: 14px; object-position: center; }
+.legenda-banner { display: block; font-size: .75rem; color: var(--cor-secundaria); padding: 12px 9px 4px; }
+.container { max-width: 1240px; padding-top: 34px; padding-bottom: 34px; }
+.titulo-secao h2, .eventos h2 { font-size: 1.4rem; line-height: 1.3; letter-spacing: -.02em; }
+.titulo-secao a { font-size: .85rem; text-decoration: underline; }
+.atalhos { gap: 20px; }
+.atalho { padding: 22px; border-radius: 14px; box-shadow: none; }
+.atalho:nth-child(1) { background: #f1f6ed; border-color: #d8e4d2; }
+.atalho:nth-child(2) { background: #fcf7e8; border-color: #e9dfbc; }
+.atalho:nth-child(3) { background: #fbefeb; border-color: #ebd8d0; }
+.atalho .icone { font-size: 1.6rem; background: #ffffffaa; border: 1px solid #ffffff; }
+.atalho h3 { font-size: 1.05rem; }
+.atalho p { font-size: .85rem; }
+.atalho-link { font-size: .8rem; text-decoration: underline; }
+.conteudo-principal { margin-top: 8px; gap: 28px; }
+.noticia, .contato-card, .apresentacao-escola, .eventos { box-shadow: none; border-color: var(--cor-borda); }
+.noticia h3 { font-size: 1.1rem; }
+.noticia p, .evento p { font-size: .95rem; }
+.feed-status { font-size: .8rem; color: var(--cor-secundaria); margin: 0 0 14px; }
+.feed-status:empty { display: none; }
+.estado-vazio { border: 1px dashed #b6c8b1; border-radius: 10px; background: #f5f8f0; width: 100%; padding: 24px; font-size: .95rem; }
+.carrossel-noticias .estado-vazio { flex: 1 0 100%; }
+.eventos { background: #fffef8; padding: 24px; }
+.data { color: var(--cor-destaque-escura); background: #edf3e6; }
+.destaques-cards { gap: 20px; }
+.destaque { flex-direction: column; align-items: flex-start; padding: 24px; border-radius: 14px; border-color: var(--cor-borda); min-height: 180px; }
+.destaque .imagem-placeholder { width: 38px; height: 6px; border: 0; border-radius: 4px; background: #c9dcbf; }
+.destaque:nth-child(2) .imagem-placeholder { background: #ecd48b; }
+.destaque:nth-child(3) .imagem-placeholder { background: #e6b9ab; }
+.destaque .imagem-placeholder::before, .destaque .imagem-placeholder::after { display: none; }
+.destaque h3 { font-size: 1.1rem; }
+.destaque p { font-size: .95rem; line-height: 1.8; }
+.destaque p a { text-decoration: underline; color: var(--cor-destaque-escura); }
+.rodape { color: var(--cor-texto); background: #edf2e8; border-top: 1px solid #d4dfce; padding-top: 36px; padding-bottom: 36px; }
+.rodape-escola h3, .rodape-escola p, .endereco-texto p, .contato-item p, .rodape .link-mapa, .rodape .link-instagram, .rodape a { color: var(--cor-destaque-escura); }
+.contato-item svg { color: var(--cor-destaque); }
+.rodape-mapa { margin: 0; }
+.rodape-mapa iframe { height: 230px; }
+.painel-acessibilidade { background: #f1f5ec; border-bottom: 1px solid var(--cor-borda); }
+.painel-acessibilidade > summary { cursor: pointer; padding: 10px max(4%, calc((100% - 1280px) / 2)); font-size: .8rem; color: var(--cor-destaque-escura); min-height: 44px; font-weight: 700; }
+.resumo-acessibilidade { font-weight: 400; margin-left: 14px; color: var(--cor-secundaria); }
+.painel-acessibilidade .acessibilidade { position: static; display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; padding: 20px max(4%, calc((100% - 1280px) / 2)); gap: 16px; background: #fff; border-top: 1px solid var(--cor-borda); }
+.grupo-acessibilidade { display: grid; gap: 8px; font-size: .85rem; }
+.grupo-acessibilidade > div { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.opcoes-acessibilidade { display: flex; flex-wrap: wrap; gap: 8px; }
+.acessibilidade button { min-height: 44px; padding: 10px 13px; border: 1px solid #8ba286; font-size: .85rem; color: var(--cor-destaque-escura); background: #fff; }
+.acessibilidade button[aria-pressed="true"] { background: var(--cor-destaque-escura); color: #fff; border-width: 2px; }
+.acessibilidade output { min-width: 3em; text-align: center; font-variant-numeric: tabular-nums; }
+.ajuda-acessibilidade { flex-basis: 100%; font-size: .85rem; color: var(--cor-secundaria); }
+.status-acessibilidade { flex-basis: 100%; font-size: .85rem; min-height: 1em; }
+body.texto-espacado p, body.texto-espacado li, body.texto-espacado .noticia-conteudo, body.texto-espacado .contato-card { line-height: 2; letter-spacing: .08em; word-spacing: .12em; }
+body.links-destacados a { text-decoration: underline !important; text-decoration-thickness: 2px !important; font-weight: 700; }
+body.cores-acessiveis { --cor-texto:#172b45; --cor-secundaria:#344b67; --cor-fundo:#f4f6f9; --cor-destaque:#174f7a; --cor-destaque-escura:#123b63; --cor-suave:#e8f0fa; }
+body.cores-acessiveis .banner, body.cores-acessiveis .rodape { background: #edf2f9; }
+body.cores-acessiveis .atalho { background: #fff6d9; border-color: #9caaba; }
+body.cores-acessiveis .data { background: #fff2b3; }
+body.texto-ampliado .cabecalho { flex-wrap: wrap; }
+body.texto-ampliado .menu { width: 100%; flex-wrap: wrap; }
+body.texto-ampliado .banner, body.texto-ampliado .apresentacao-escola { display: flex; flex-direction: column; align-items: stretch; }
+body.texto-ampliado .banner-texto h2 { font-size: 2rem; }
+body.texto-ampliado .conteudo-principal, body.texto-ampliado .atalhos, body.texto-ampliado .destaques-cards, body.texto-ampliado .contatos-grid, body.texto-ampliado .noticias-section > .noticias { grid-template-columns: minmax(0,1fr); }
+body.texto-ampliado .rodape { grid-template-columns: minmax(0,1fr); }
+body.alto-contraste, body.alto-contraste * { background: #000 !important; background-image: none !important; color: #fff !important; border-color: #fff !important; box-shadow: none !important; }
+body.alto-contraste a { color: #fff281 !important; text-decoration: underline; }
+body.alto-contraste :focus-visible { outline-color: #fff281 !important; }
+body.alto-contraste button[aria-pressed="true"] { outline: 3px solid #fff281; outline-offset: -4px; }
+body.alto-contraste .marcador-feriado { background: #fff !important; }
+body.alto-contraste .dia-hoje { outline: 2px dashed #fff281; }
+@media (max-width:1000px) { .cabecalho { flex-wrap: wrap; } .menu { justify-content: flex-start; } }
+@media (max-width:700px) {
+    .banner { padding: 32px 5%; gap: 30px; }
+    .banner-texto h2 { font-size: 2.3rem; }
+    .banner-imagem { transform: none; width: 100%; }
+    .banner-imagem img { height: 230px; }
+    .sobretitulo-banner { letter-spacing: .08em; font-size: .65rem; margin-bottom: 18px; }
+    .resumo-acessibilidade { display: none; }
+    .container { padding-top: 28px; padding-bottom: 24px; }
+    .atalhos { gap: 12px; }
+    .atalho { padding: 18px; }
+    .eventos { grid-row: auto; }
+    .rodape { gap: 28px; }
+    .destaques-cards { grid-template-columns: minmax(0,1fr); }
+    .acessibilidade .opcoes-acessibilidade { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+    .acessibilidade .opcoes-acessibilidade button { text-align: left; }
+}
+@media (max-width:600px) {
+    .cabecalho { padding: 14px 4%; flex-wrap: wrap; gap: 10px; }
+    .identidade { min-width: 0; }
+    .identidade h1 { font-size: .95rem; }
+    .identidade p { font-size: .7rem; }
+    .logo img { width: 52px; height: 54px; }
+    .menu { display: none; flex-direction: column; align-items: stretch; }
+    .menu.aberto { display: flex; }
+    .menu a { text-align: left; font-size: 1rem; }
+    .menu-mobile { display: block; min-width: 44px; min-height: 44px; }
+    .banner-texto h2 { font-size: 2.15rem; }
+    .acoes-banner { gap: 10px; }
+    .banner .botao { font-size: .85rem; padding: 12px 14px; }
+    .banner-texto p { font-size: .95rem; }
+    .contato-card { padding: 22px; }
+    .banner-imagem img { height: 200px; }
+}
+@media (forced-colors:active) { .atalho, .noticia, .evento, .dia-calendario { border: 1px solid CanvasText; } }

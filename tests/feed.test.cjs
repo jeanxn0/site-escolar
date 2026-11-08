@@ -7,7 +7,7 @@ function setup(csv, url = 'https://docs.google.com/published.csv', failure = fal
     const status = { textContent: '' };
     const context = vm.createContext({
         window: { ESCOLA_CONFIG: { planilhaCsvUrl: url } },
-        document: { getElementById: () => null, querySelectorAll: () => [], addEventListener() {} },
+        document: { getElementById: () => null, querySelectorAll: () => [], querySelector: () => null, addEventListener() {} },
         URL, AbortSignal, Date, Intl,
         fetch: async () => { if (failure) throw Error('offline'); return { ok: true, text: async () => csv }; },
     });

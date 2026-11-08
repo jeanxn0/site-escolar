@@ -11,10 +11,31 @@
 
 <body>
     <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <details class="painel-acessibilidade" id="preferenciasAcessibilidade">
+        <summary><span aria-hidden="true">◉</span> Acessibilidade <span class="resumo-acessibilidade">Ajuste a leitura do site</span></summary>
+        <div class="acessibilidade" role="group" aria-label="Preferências de acessibilidade">
+            <div class="grupo-acessibilidade"><span>Tamanho do texto</span><div>
+                <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
+                <output id="escalaFonte" aria-label="Tamanho atual do texto">100%</output>
+                <button type="button" id="aumentarFonte" aria-label="Aumentar tamanho do texto">A+</button>
+                <button type="button" id="restaurarFonte">Texto normal</button>
+            </div></div>
+            <div class="opcoes-acessibilidade">
+                <button type="button" id="altoContraste" aria-pressed="false">Alto contraste</button>
+                <button type="button" id="coresAcessiveis" aria-pressed="false">Cores alternativas</button>
+                <button type="button" id="reduzirAnimacoes" aria-pressed="false">Reduzir movimentos</button>
+                <button type="button" id="espacarTexto" aria-pressed="false">Mais espaço no texto</button>
+                <button type="button" id="destacarLinks" aria-pressed="false">Destacar links</button>
+            </div>
+            <p class="ajuda-acessibilidade">Use Tab para navegar, Enter para ativar e Esc para fechar os controles. Suas preferências ficam salvas neste navegador.</p>
+            <button type="button" id="restaurarPreferencias">Restaurar preferências</button>
+            <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
+        </div>
+    </details>
 
     <header class="cabecalho">
         <div class="logo">
-            <img src="515514932_17965787864923751_4791740859324778420_n.jpg" alt="Logo da escola">
+            <img src="515514932_17965787864923751_4791740859324778420_n.jpg" alt="Brasão da Escola Estadual Gabriel Odorico">
         </div>
         <div class="identidade">
             <h1>Escola Estadual Gabriel Odorico</h1>
@@ -31,7 +52,7 @@
         </nav>
     </header>
 
-    <main class="container" id="conteudo">
+    <main class="container" id="conteudo" tabindex="-1">
         <section class="noticias-section" id="avisos">
             <div class="titulo-secao">
                 <h2>Avisos e Notícias</h2>
@@ -91,14 +112,7 @@
 
     </footer>
 
-    <div class="acessibilidade" role="group" aria-label="Opções de acessibilidade">
-        <button type="button" id="diminuirFonte" aria-label="Diminuir tamanho do texto">A−</button>
-        <button type="button" id="aumentarFonte" aria-label="Aumentar tamanho do texto">A+</button>
-        <button type="button" id="altoContraste" aria-pressed="false">Alto contraste</button>
-        <button type="button" id="coresAcessiveis" aria-pressed="false">Modo para daltonismo</button>
-        <span class="status-acessibilidade" id="statusAcessibilidade" role="status" aria-live="polite"></span>
-    </div>
-    <script src="config.js"></script>
+<script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 

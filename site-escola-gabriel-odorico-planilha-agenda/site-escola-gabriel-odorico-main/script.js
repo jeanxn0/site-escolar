@@ -25,105 +25,65 @@ document.querySelectorAll(".menu a").forEach(function (link) {
     });
 });
 
-let escalaFonte = 1;
-const passoFonte = 0.1;
-const escalaMinima = 0.8;
-const escalaMaxima = 1.3;
-const statusAcessibilidade = document.getElementById("statusAcessibilidade");
-
-function atualizarEscalaFonte() {
-    document.body.style.zoom = escalaFonte;
-}
-
-document.getElementById("aumentarFonte")?.addEventListener("click", function () {
-    escalaFonte = Math.min(escalaFonte + passoFonte, escalaMaxima);
-    atualizarEscalaFonte();
-    if (statusAcessibilidade) statusAcessibilidade.textContent = "Tamanho do texto aumentado.";
-});
-
-document.getElementById("diminuirFonte")?.addEventListener("click", function () {
-    escalaFonte = Math.max(escalaFonte - passoFonte, escalaMinima);
-    atualizarEscalaFonte();
-    if (statusAcessibilidade) statusAcessibilidade.textContent = "Tamanho do texto reduzido.";
-});
-
-document.getElementById("restaurarFonte")?.addEventListener("click", function () {
-    escalaFonte = 1;
-    atualizarEscalaFonte();
-    if (statusAcessibilidade) statusAcessibilidade.textContent = "Tamanho original do texto restaurado.";
-});
-
-const botaoContraste = document.getElementById("altoContraste");
-botaoContraste?.addEventListener("click", function () {
-    const ativo = document.body.classList.toggle("alto-contraste");
-    botaoContraste.setAttribute("aria-pressed", String(ativo));
-    if (statusAcessibilidade) {
-        statusAcessibilidade.textContent = `Alto contraste ${ativo ? "ativado" : "desativado"}.`;
-    }
-});
-
-const botaoCoresAcessiveis = document.getElementById("coresAcessiveis");
-const chaveCoresAcessiveis = "escolaGabrielOdoricoCoresAcessiveis";
-
-if (botaoCoresAcessiveis) {
+function configurarAcessibilidade() {
+    const painel = document.getElementById("preferenciasAcessibilidade");
+    if (!painel) return;
+    const chave = "escolaGOAcessibilidadeV2";
+    const padrao = { escala: 1, contraste: false, cores: false, movimento: false, espaco: false, links: false };
+    const controles = [
+        ["altoContraste", "contraste", "alto-contraste", "Alto contraste"],
+        ["coresAcessiveis", "cores", "cores-acessiveis", "Cores alternativas"],
+        ["reduzirAnimacoes", "movimento", "reduzir-animacoes", "Reduzir movimentos"],
+        ["espacarTexto", "espaco", "texto-espacado", "Mais espaço no texto"],
+        ["destacarLinks", "links", "links-destacados", "Destacar links"]
+    ];
+    let preferencias = { ...padrao };
     try {
-        const ativo = localStorage.getItem(chaveCoresAcessiveis) === "ativado";
-        document.body.classList.toggle("cores-acessiveis", ativo);
-        botaoCoresAcessiveis.setAttribute("aria-pressed", String(ativo));
-    } catch {
-        if (statusAcessibilidade) {
-            statusAcessibilidade.textContent = "A preferência de cores não pode ser lembrada neste navegador.";
+        const salvas = JSON.parse(localStorage.getItem(chave) || "null");
+        if (salvas && typeof salvas === "object") {
+            if (Number.isFinite(salvas.escala)) preferencias.escala = Math.min(2, Math.max(1, salvas.escala));
+            controles.forEach(([,campo]) => { preferencias[campo] = salvas[campo] === true; });
         }
+    } catch { /* As opções continuam funcionando sem armazenamento local. */ }
+    const status = document.getElementById("statusAcessibilidade");
+    function aplicar(mensagem, salvar = true) {
+        document.documentElement.style.setProperty("--escala-texto", preferencias.escala);
+        document.body.classList.toggle("texto-ampliado", preferencias.escala > 1.2);
+        controles.forEach(([id, campo, classe]) => {
+            document.body.classList.toggle(classe, preferencias[campo]);
+            document.getElementById(id)?.setAttribute("aria-pressed", String(preferencias[campo]));
+        });
+        const medida = document.getElementById("escalaFonte");
+        if (medida) medida.textContent = `${Math.round(preferencias.escala * 100)}%`;
+        document.getElementById("diminuirFonte").disabled = preferencias.escala <= 1;
+        document.getElementById("aumentarFonte").disabled = preferencias.escala >= 2;
+        let lembrete = "";
+        if (salvar) {
+            try { localStorage.setItem(chave, JSON.stringify(preferencias)); }
+            catch { lembrete = " Preferência aplicada apenas nesta página; o navegador não permitiu salvar."; }
+        }
+        if (status && mensagem) status.textContent = mensagem + lembrete;
     }
-
-    botaoCoresAcessiveis.addEventListener("click", function () {
-        const ativo = document.body.classList.toggle("cores-acessiveis");
-        botaoCoresAcessiveis.setAttribute("aria-pressed", String(ativo));
-
-        try {
-            localStorage.setItem(chaveCoresAcessiveis, ativo ? "ativado" : "desativado");
-            if (statusAcessibilidade) {
-                statusAcessibilidade.textContent = ativo
-                    ? "Modo de cores acessíveis ativado."
-                    : "Modo de cores acessíveis desativado.";
-            }
-        } catch {
-            if (statusAcessibilidade) {
-                statusAcessibilidade.textContent = "Modo aplicado nesta página, mas não foi possível salvar a preferência.";
-            }
-        }
-    });
-}
-
-const botaoReduzirAnimacoes = document.getElementById("reduzirAnimacoes");
-const chaveReduzirAnimacoes = "escolaGabrielOdoricoReduzirAnimacoes";
-
-if (botaoReduzirAnimacoes) {
-    try {
-        const ativo = localStorage.getItem(chaveReduzirAnimacoes) === "ativado";
-        document.body.classList.toggle("reduzir-animacoes", ativo);
-        botaoReduzirAnimacoes.setAttribute("aria-pressed", String(ativo));
-    } catch {
-        if (statusAcessibilidade) {
-            statusAcessibilidade.textContent = "A preferência de animações não pode ser lembrada neste navegador.";
-        }
+    function alterarFonte(delta) {
+        preferencias.escala = Math.round(Math.min(2, Math.max(1, preferencias.escala + delta)) * 10) / 10;
+        aplicar(`Texto em ${Math.round(preferencias.escala * 100)}%.`);
     }
-
-    botaoReduzirAnimacoes.addEventListener("click", function () {
-        const ativo = document.body.classList.toggle("reduzir-animacoes");
-        botaoReduzirAnimacoes.setAttribute("aria-pressed", String(ativo));
-        try {
-            localStorage.setItem(chaveReduzirAnimacoes, ativo ? "ativado" : "desativado");
-            if (statusAcessibilidade) {
-                statusAcessibilidade.textContent = `Animações reduzidas ${ativo ? "ativadas" : "desativadas"}.`;
-            }
-        } catch {
-            if (statusAcessibilidade) {
-                statusAcessibilidade.textContent = "A preferência foi aplicada nesta página, mas não pode ser salva.";
-            }
-        }
+    document.getElementById("aumentarFonte")?.addEventListener("click", () => alterarFonte(0.1));
+    document.getElementById("diminuirFonte")?.addEventListener("click", () => alterarFonte(-0.1));
+    document.getElementById("restaurarFonte")?.addEventListener("click", () => { preferencias.escala = 1; aplicar("Texto em 100%."); });
+    controles.forEach(([id,campo,,nome]) => document.getElementById(id)?.addEventListener("click", () => {
+        preferencias[campo] = !preferencias[campo];
+        aplicar(`${nome}: ${preferencias[campo] ? "ativado" : "desativado"}.`);
+    }));
+    document.getElementById("restaurarPreferencias")?.addEventListener("click", () => {
+        preferencias = { ...padrao }; aplicar("Preferências restauradas.");
     });
+    painel.addEventListener("keydown", event => {
+        if (event.key === "Escape") { painel.open = false; painel.querySelector("summary").focus(); }
+    });
+    aplicar("", false);
 }
+configurarAcessibilidade();
 
 function configurarCarrosselNoticias() {
     const lista = document.getElementById("carrosselNoticias");
@@ -134,7 +94,7 @@ function configurarCarrosselNoticias() {
     if (!lista || !anterior || !proxima || !posicao) return;
 
     function atualizarControles() {
-        const cards = Array.from(lista.children);
+        const cards = Array.from(lista.querySelectorAll(".noticia"));
         const total = cards.length;
         const passo = cards[0]
             ? cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(lista).gap || "0")
@@ -386,7 +346,7 @@ function configurarCalendario() {
                 `dia-calendario${feriado ? " feriado" : ""}`,
                 String(dia)
             );
-            celula.setAttribute("role", "gridcell");
+            celula.setAttribute("role", "listitem");
             const hoje = new Date();
             if (dia === hoje.getDate() && mes === hoje.getMonth() && ano === hoje.getFullYear()) {
                 celula.classList.add("dia-hoje");
@@ -554,5 +514,6 @@ document.addEventListener("keydown", event => {
         menuMobile.focus();
     }
 });
+document.querySelector(".pular-conteudo")?.addEventListener("click", () => document.getElementById("conteudo")?.focus());
 configurarCarrosselNoticias();
 carregarConteudoDaPlanilha();
