@@ -20,16 +20,14 @@ A integração alimenta a agenda que já existe no site. Não utiliza Google Age
 5. Arquivo > Compartilhar > Publicar na Web. Selecione SOMENTE Conteudos,
    formato CSV e copie o link publicado. Compartilhar o link de edição não basta.
 6. Cole o link em planilhaCsvUrl no arquivo config.js. Não altere script.js.
-7. Cole a URL oficial do Facebook em facebookUrl no mesmo config.js.
-   O botão de Facebook fica oculto até receber um endereço válido.
-8. Notícias/avisos aparecem na página inicial e na página Avisos; contatos
+7. Notícias/avisos aparecem na página inicial e na página Avisos; contatos
    adicionais aparecem na página Contatos; eventos ficam na agenda existente.
    Na página inicial aparecem até quatro próximos eventos. No calendário,
    os eventos são listados por mês. Use as setas para navegar.
-9. Alterações da planilha aparecem ao recarregar o site; a publicação do Google
+8. Alterações da planilha aparecem ao recarregar o site; a publicação do Google
    pode ter atraso. O site preserva seu conteúdo estático se a leitura falhar.
    Datas inválidas são ignoradas com aviso na área da agenda.
-10. Teste em uma cópia antes de publicar. Não há publicação automática neste PR.
+9. Teste em uma cópia antes de publicar. Não há publicação automática neste PR.
 
-A planilha e o Facebook ainda precisam dos links reais. A criação da conta
+A planilha ainda precisa do link real. A criação da conta
 Google e a publicação da aba devem ser concluídas pelo responsável da escola.

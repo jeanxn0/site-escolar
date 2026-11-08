@@ -10,7 +10,7 @@ O site está em `site-escola-gabriel-odorico-planilha-agenda/site-escola-gabriel
 
 1. Importe `modelo-planilha-escola.csv` no Google Planilhas e substitua os exemplos.
 2. Publique apenas a aba de conteúdo em CSV. Todos os dados publicados ficam públicos, inclusive linhas marcadas como não exibidas.
-3. Configure `planilhaCsvUrl` e `facebookUrl` em `config.js`.
+3. Configure `planilhaCsvUrl` em `config.js`.
 4. Leia `COMO_CONECTAR_PLANILHA.txt` para os campos, formatos e instruções completas.
 
 A página Contatos conserva o e-mail institucional já informado no projeto. Uma nova conta Gmail ainda não foi criada. O responsável deverá escolher o endereço e concluir a configuração e verificação do Google. Não coloque senhas no código.

@@ -545,10 +545,6 @@ function exibirContatos(contatos) {
 
 document.getElementById("buscaNoticias")?.addEventListener("input", filtrarNoticias);
 document.getElementById("tipoNoticia")?.addEventListener("change", filtrarNoticias);
-const facebook = linkSeguro(window.ESCOLA_CONFIG?.facebookUrl || "");
-if (facebook && new URL(facebook).protocol === "https:" && /(^|\.)facebook\.com$/.test(new URL(facebook).hostname)) {
-    document.querySelectorAll("[data-facebook]").forEach(link => { link.href = facebook; link.hidden = false; });
-}
 menuMobile?.setAttribute("aria-controls", "menu");
 document.addEventListener("keydown", event => {
     if (event.key === "Escape" && menu?.classList.contains("aberto")) {
